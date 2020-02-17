@@ -9,6 +9,25 @@ object Parsing {
   import scala.io.Source
   import java.io.File
   import io.circe._, io.circe.parser.decode
+
+  /**
+   * From a collection of (possibly, anyway) {@code TeX}-formatted words, strip away the formatting directives.
+   *
+   * @param words collection of words from which {@code TeX} formatting directives are to be removed
+   * @return collection of "cleaned" words
+   */
+  def parseCleanWords(words: List[String]): List[String] = {
+    def rmPfx(s: String): String = {
+      val trimmed = s.stripPrefix("\\textbf{").stripPrefix("\\textit{")
+      (trimmed === s).fold(trimmed, rmPfx(trimmed))
+    }
+    def rmSfx(s: String): String = s.split("\\}").toList match {
+      case res :: Nil => res
+      case _ => throw new Exception(s"Suffix removal failed: $s")
+    }
+    words map { (rmPfx _) andThen { (s: String) => s.startsWith("\\text").fold(s, rmSfx(s)) } }
+  }
+
   /**
    * Read the given file into a collection of questions and answers.
    *
