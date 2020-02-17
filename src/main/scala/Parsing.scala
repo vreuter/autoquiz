@@ -17,6 +17,8 @@ object Parsing {
    * @return collection of "cleaned" words
    */
   def parseCleanWords(words: List[String]): List[String] = {
+    import cats.instances.string._, cats.syntax.eq._
+    import mouse.boolean._
     def rmPfx(s: String): String = {
       val trimmed = s.stripPrefix("\\textbf{").stripPrefix("\\textit{")
       (trimmed === s).fold(trimmed, rmPfx(trimmed))
