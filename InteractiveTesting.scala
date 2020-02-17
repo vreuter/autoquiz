@@ -14,12 +14,7 @@ object InteractiveTesting {
   import io.circe._
   
   def parse2Nel: Either[Error, List[TexQA]] => NEL[TexQA] = _.toOption.get.toNel.get
-  val testIn1 = new File("/home/vr/code/mbgene/07_TechniquesOfMolecularBiology/07-General.QandA.json")
-  val qaG1 = Parsing.readFile(testIn1).toOption.get.toNel.get
-  val testIn2 = new File("/home/vr/code/mbgene/07_TechniquesOfMolecularBiology/07-EMSA.QandA.json")
-  val qaG2 = Parsing.readFile(testIn2).toOption.get.toNel.get
-  val testOut1 = new File("/home/vr/testtex/testQaOut1.tex")
-  
+
   def standardPreamble(title: String, author: String, date: String) = List(
     "\\documentclass{article}", 
     "\\usepackage{amsmath, amssymb}", 
@@ -42,8 +37,6 @@ object InteractiveTesting {
   implicit val myRender = RenderQA(
     (q: String) => s"\\item{$q}", "QandA", "\\begin{answered}", "\\end{answered}")
   
-  Writing.writeTexQA( testOut1, standardPreamble("Test", "Vince", "Feb. 16"), NEL("General" -> qaG1, List("EMSA" -> qaG2)) )
-
   def writeAllQA: (Option[File], List[File], List[(File, String)]) = {
     import cats.Alternative, cats.instances.either._, cats.instances.list._
     val ext = ".QandA.json"
