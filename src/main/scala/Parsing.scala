@@ -21,13 +21,19 @@ object Parsing {
     def rmPfx(s: String): String = {
       @tailrec
       def go(ss: String): String = {
-        val trimmed = ss.stripPrefix("\\textbf{").stripPrefix("\\textit{").stripPrefix("\\underline{")
+        val trimmed = ss.stripPrefix("\\textbf{")
+                        .stripPrefix("\\textit{")
+                        .stripPrefix("\\underline{")
+                        .stripPrefix("\\item{")
+                        .stripPrefix("\\enumerate{")
+                        .stripPrefix("\\begin{")
+                        .stripPrefix("\\end{")
         if (trimmed === ss) ss else go(trimmed)
       }
       go(rmHeadSpaces(s))
     }
     def rmSfx(s: String): String = s.reverse.dropWhile(_ === '}').reverse.mkString("")
-    (rmPfx _) andThen { (s: String) => s.startsWith("\\text").fold(s, rmSfx(s)) }
+    (s: String) => rmSfx(rmPfx(s))
   }
 
   /**
