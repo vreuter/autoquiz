@@ -61,7 +61,7 @@ object InteractiveTesting {
       case None => (Option.empty[File], List.empty[File], errFilePairs)
       case Some(trios) => {
         val outfile = new File("/home/vr/testtex/testQaOutAll.tex")
-        val preamble = standardPreamble("All Questions", "Vince Reuter", "February 17, 2020")
+        val preamble = standardPreamble("All Questions", "Vince Reuter", "February 18, 2020")
         val (files, groups) = trios.toList.foldRight(
           List.empty[File] -> List.empty[(String, NEL[TexQA])]){ 
             case ((n, f, qas), (fs, gs)) => (f :: fs, (n, qas) :: gs) }
