@@ -11,9 +11,16 @@ package autoquiz
  * @return A newly minted instance
  */
 final case class TexQA(q: String, a: List[String], tags: List[String], refs: List[String]) {
+  import mouse.boolean._
   def plain: (String, List[String]) = renderPlain(Parsing.removeTexFmt)
-  def renderPlain(rmTex: String => String): (String, List[String]) = 
-    q.split(" ").map(rmTex).mkString(" ") -> a.map(rmTex).filter(_.nonEmpty)
+  def renderPlain(rmTex: String => String, rmLeadSpaces: Boolean = true): (String, List[String]) = {
+    def onWords(f: String => String): String => String = s => {
+      val words = s.split(" ")
+      rmLeadSpaces.fold(words.dropWhile(_.isEmpty), words).map(f).mkString(" ")
+    }
+    onWords(rmTex)(q) -> a.map(onWords(rmTex)).filterNot {
+      s => s.isEmpty || texFmtDirectiveKeyowrds.contains(s) }
+  }
 }
 
 /**
