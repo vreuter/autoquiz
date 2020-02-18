@@ -7,6 +7,7 @@ package autoquiz
  */
 trait RenderQA {
   import cats.data.{ NonEmptyList => NEL }
+  import mouse.boolean._
   
   /** Name for {@code TeX} environment for question-and-answer section */
   def env: Option[String]
@@ -30,15 +31,16 @@ trait RenderQA {
       def aText(nIdentStep: Int): String => String = s => s"${Seq.fill(nLeftPad * nIdentStep)(" ") mkString ""}$s"
       val step2Text = aText(2)
       val init = qas.toList flatMap { qa => {
-        val at = qa.a match {
+        val aList = qa.a match {
           case Nil => throw new Exception(s"No answer for question in section $sectHead: ${qa.q}")
           case a :: Nil => List(aText(2)(a))
           case as => {
-            val itemText: String => String = a => aText(3)(s"\\item{$a}")
+            val itemText: String => String = 
+              a => aText(3)(hasTexFmtDir(rmHeadSpaces(a)).fold(a, s"\\item{$a}"))
             step2Text("\\begin{itemize}") :: (as.map(itemText) :+ step2Text("\\end{itemize}"))
           }
         }
-        qText(qa) :: step2Text(headA) :: (at :+ step2Text(footA))
+        qText(qa) :: step2Text(headA) :: (aList :+ step2Text(footA))
       } }
       (s"\\section{$sectHead}" :: addEnv(init)) mkString "\n"
     }

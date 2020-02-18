@@ -11,6 +11,9 @@ package autoquiz
  * @return A newly minted instance
  */
 final case class TexQA(q: String, a: List[String], tags: List[String], refs: List[String]) {
+  def plain: (String, List[String]) = renderPlain(Parsing.removeTexFmt)
+  def renderPlain(rmTex: String => String): (String, List[String]) = 
+    q -> a.map(rmTex).filter(_.nonEmpty)
   def renderTex(offset: Int)(implicit render: RenderQA): String = {
     require(offset >= 0, s"Negative line space offset: $offset")
     List(render ask q, render, render.headA) ::: (a :+ render.footA) mkString "\n"
