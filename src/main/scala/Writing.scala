@@ -8,7 +8,53 @@ package autoquiz
 object Writing {
   import java.io.{ BufferedWriter => BW, File, FileWriter => FW }
   import cats.data.{ NonEmptyList => NEL }
+  import Targets.TargetFolder
+
+  /**
+   * Run {@code pdflatex} to produce PDF from {@code TeX} source.
+   *
+   * @param texfile Path to the {@code TeX} source file
+   * @param out Representation of path to output folder
+   * @param mkdir Whether to license creation of intermediate folder(s)
+   * @return Either a {@code Left} wrapping hypothetical output file path and 
+   *         the error that occurred, or a {@code Right} wrapping path to 
+   *         output file written
+   */
+  def pdftex(texfile: File, out: TargetFolder, 
+    mkdir: Boolean = true): Either[(File, RuntimeException), File] = {
+    import scala.sys.process._
+    val outfile = new File(out.texOutFolder(texfile), texfile.getName)
+    val progPath = {
+      try { Right(Seq("which", "pdflatex").lineStream.head) }
+      catch { case e: RuntimeException => Left(outfile -> e) }
+    }
+    progPath flatMap { tex2Pdf(texfile, out, _: String) }
+  }
   
+  /**
+   * @throws java.lang.RuntimeException if the program crashes
+   */
+  private def tex2Pdf(infile: File, target: TargetFolder, 
+    progPath: String, mkdir: Boolean = true): Either[(File, RuntimeException), File] = {
+    import scala.sys.process._
+    import mouse.boolean._
+    val outfile = new File(target.texOutFolder(infile), infile.getName)
+    val outdir = outfile.getParentFile
+    val cmd = Seq(progPath, "--output-directory", outdir.getPath, infile.getPath)
+    println(s"Command: ${cmd mkString " "}")
+    for {
+      _ <- (outdir.isDirectory, mkdir) match {
+        case (true, _) => Right[(File, RuntimeException), File](outfile)
+        case (false, true) => { outdir.mkdirs(); Right[(File, RuntimeException), File](outfile) }
+        case (false, false) => { Left[(File, RuntimeException), File](
+          outfile -> new RuntimeException(s"Target folder missing: $outdir")) }
+      }
+      lastLine <- try { Right(cmd.lineStream.last) } catch { case e: RuntimeException => Left(outfile -> e) }
+      res <- lastLine.startsWith("Transcript written on").either(
+        outfile -> new RuntimeException(s"Suspicious last log line: $lastLine"), outfile)
+    } yield res
+  }
+
   /**
    * Write to disk a collection of question-and-answer groups (e.g. by topic).
    *
