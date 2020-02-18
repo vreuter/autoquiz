@@ -22,14 +22,11 @@ object Parsing {
       @tailrec
       def go(ss: String): String = {
         val trimmed = ss.stripPrefix("\\textbf{").stripPrefix("\\textit{").stripPrefix("\\underline{")
-        if (trimmed === s) s else go(trimmed)
+        if (trimmed === ss) ss else go(trimmed)
       }
       go(rmHeadSpaces(s))
     }
-    def rmSfx(s: String): String = s.split("\\}").toList match {
-      case res :: Nil => res
-      case _ => throw new Exception(s"Suffix removal failed: $s")
-    }
+    def rmSfx(s: String): String = s.reverse.dropWhile(_ === '}').reverse.mkString("")
     (rmPfx _) andThen { (s: String) => s.startsWith("\\text").fold(s, rmSfx(s)) }
   }
 
