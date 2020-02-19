@@ -11,9 +11,15 @@ package autoquiz
  * @return A newly minted instance
  */
 final case class TexQA(q: String, a: List[String], tags: List[String], refs: List[String]) {
-  def renderTex(offset: Int)(implicit render: RenderQA): String = {
-    require(offset >= 0, s"Negative line space offset: $offset")
-    List(render ask q, render, render.headA) ::: (a :+ render.footA) mkString "\n"
+  import mouse.boolean._
+  def plain: (String, List[String]) = renderPlain(Parsing.removeTexFmt)
+  def renderPlain(rmTex: String => String, rmLeadSpaces: Boolean = true): (String, List[String]) = {
+    def onWords(f: String => String): String => String = s => {
+      val words = s.split(" ")
+      rmLeadSpaces.fold(words.dropWhile(_.isEmpty), words).map(f).mkString(" ")
+    }
+    onWords(rmTex)(q) -> a.map(onWords(rmTex)).filterNot {
+      s => s.isEmpty || texFmtDirectiveKeyowrds.contains(s) }
   }
 }
 
