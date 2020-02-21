@@ -11,6 +11,9 @@ package object autoquiz {
 
   /**
    * Determine whether the given string is just a formatting directive.
+   *
+   * @param s String to test as just formatting directive
+   * @return Whether given string appears to just be formatting directive
    */
   def allTexFmtDir(s: String): Boolean = {
     val dirs = texFmtDirectiveKeyowrds flatMap { kw => List(s"\\begin{$kw}", s"\\end{$kw}") }

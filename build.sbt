@@ -1,5 +1,5 @@
 name := "autoquiz"
-version := "0.0.4-SNAPSHOT"
+version := "0.0.4"
 scalaVersion := "2.12.9"
 organization := "vreuter"
 
