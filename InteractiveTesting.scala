@@ -2,7 +2,7 @@ object InteractiveTesting {
   
   import java.io.{ BufferedWriter =>  BW, File, FileWriter => FW }
   import java.nio.file.Paths
-  val libpath = "/home/vr/code/autoquiz/target/scala-2.12/autoquiz_v0.0.4.jar"
+  val libpath = "/home/vr/code/autoquiz/target/scala-2.12/autoquiz_v0.0.5-SNAPSHOT.jar"
   interp.load.cp(ammonite.ops.Path(libpath))
   import autoquiz._, Targets.{ TargetFolder, Relpath }
   interp.load.ivy("org.typelevel" %% "cats-core" % "2.1.0")
