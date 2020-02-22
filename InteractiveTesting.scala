@@ -39,15 +39,14 @@ object InteractiveTesting {
   
   def writeAllQA: (Option[File], List[File], List[(File, String)]) = {
     import cats.Alternative, cats.instances.either._, cats.instances.list._
-    val ext = ".QandA.json"
     def file2Name(f: File): String = {
       val nDot = f.getName.count(_ == '.')
       val fnFields = f.getName.split("\\.").dropRight(nDot).mkString(".").split("-").toList
       fnFields.head.forall(Character.isDigit).fold(fnFields.tail, fnFields) mkString " "
     }
-    val folders = List("mbgene", "AlbertsMolbio") map {
+    val folders = List("biology-random-notes", "mbgene", "AlbertsMolbio") map {
       foldName => new File(Paths.get(System.getenv("CODE"), foldName).toString) }
-    val sectFpairs = folders flatMap { DataSeek.seekData(_: File, NEL(ext, List()), file2Name) }
+    val sectFpairs = folders flatMap { DataSeek.seekData(_: File, NEL(".QandA.json", List()), file2Name) }
     val (errFilePairs, secFileGroupTrios) = Alternative[List].separate(
       sectFpairs map { case (sect, f) =>  Parsing.readFile(f) match {
         case Left(e) => Left[(File, String), (String, File, NEL[TexQA])](f -> e.getMessage)
@@ -61,7 +60,7 @@ object InteractiveTesting {
       case None => (Option.empty[File], List.empty[File], errFilePairs)
       case Some(trios) => {
         val outfile = new File("/home/vr/testtex/testQaOutAll.tex")
-        val preamble = standardPreamble("All Questions", "Vince Reuter", "February 20, 2020")
+        val preamble = standardPreamble("All Questions", "Vince Reuter", "February 22, 2020")
         val (files, groups) = trios.toList.foldRight(
           List.empty[File] -> List.empty[(String, NEL[TexQA])]){ 
             case ((n, f, qas), (fs, gs)) => (f :: fs, (n, qas) :: gs) }
