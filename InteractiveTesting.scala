@@ -37,7 +37,7 @@ object InteractiveTesting {
   implicit val myRender = RenderQA(
     (q: String) => s"\\item{$q}", "QandA", "\\begin{answered}", "\\end{answered}")
   
-  def writeAllQA: (Option[File], List[File], List[(File, String)]) = {
+  def writeAllQA(exclude: File => Boolean = (_: File) => false): (Option[File], List[File], List[(File, String)]) = {
     import cats.Alternative, cats.instances.either._, cats.instances.list._
     def file2Name(f: File): String = {
       val nDot = f.getName.count(_ == '.')
@@ -46,7 +46,7 @@ object InteractiveTesting {
     }
     val folders = List("biology-random-notes", "mbgene", "AlbertsMolbio") map {
       foldName => new File(Paths.get(System.getenv("CODE"), foldName).toString) }
-    val sectFpairs = folders flatMap { DataSeek.seekData(_: File, NEL(".QandA.json", List()), file2Name) }
+    val sectFpairs = (folders flatMap { DataSeek.seekData(_: File, NEL(".QandA.json", List()), file2Name) }).filterNot(sf => exclude(sf._2))
     val (errFilePairs, secFileGroupTrios) = Alternative[List].separate(
       sectFpairs map { case (sect, f) =>  Parsing.readFile(f) match {
         case Left(e) => Left[(File, String), (String, File, NEL[TexQA])](f -> e.getMessage)
@@ -70,7 +70,11 @@ object InteractiveTesting {
     }
   }
 
-  val (maybeTestF, processedInfiles, inErrPairs) = writeAllQA
+  def isMbgeneTelomeresFile: File => Boolean = {
+    import cats.instances.string._, cats.syntax.eq._
+    _.getName === "09-DNA-Replication-Telomeres.QandA.json"
+  }
+  val (maybeTestF, processedInfiles, inErrPairs) = writeAllQA(isMbgeneTelomeresFile)
   maybeTestF.fold(println("No TeX source to make")){ f => println(Writing.pdftex(f, Relpath("target"))) }
 
 }
