@@ -4,6 +4,7 @@ scalaVersion := "2.12.9"
 organization := "vreuter"
 
 assemblyJarName in assembly := s"${name.value}_v${version.value}.jar"
+// Add local Maven repository to the collection of resolution options.
 publishTo := Some(Resolver.file(s"${name.value}",  new File(Path.userHome.absolutePath + "/.m2/repository")))
 
 /* More runtime-y stuff */
