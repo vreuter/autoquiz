@@ -1,6 +1,6 @@
-package autoquiz
+package autoquiz.statements
 
-import entities._
+import autoquiz.entities._
 
 final case class SimpleCausal[A](
   a: TextableEntity, action: A, b: TextableEntity, 
