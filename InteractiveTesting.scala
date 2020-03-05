@@ -44,7 +44,7 @@ object InteractiveTesting {
       val fnFields = f.getName.split("\\.").dropRight(nDot).mkString(".").split("-").toList
       fnFields.head.forall(Character.isDigit).fold(fnFields.tail, fnFields) mkString " "
     }
-    val folders = List("biology-random-notes", "mbgene", "AlbertsMolbio") map {
+    val folders = List("biology-random-notes", "mbgene", "AlbertsMolbio", "MathStat") map {
       foldName => new File(Paths.get(System.getenv("CODE"), foldName).toString) }
     val sectFpairs = (folders flatMap { DataSeek.seekData(_: File, NEL(".QandA.json", List()), file2Name) }).filterNot(sf => exclude(sf._2))
     val (errFilePairs, secFileGroupTrios) = Alternative[List].separate(
