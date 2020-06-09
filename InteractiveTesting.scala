@@ -2,15 +2,15 @@ object InteractiveTesting {
   
   import java.io.{ BufferedWriter =>  BW, File, FileWriter => FW }
   import java.nio.file.Paths
-  val libpath = "/home/vr/code/autoquiz/target/scala-2.12/autoquiz_v0.0.5-SNAPSHOT.jar"
+  val libpath = "/home/vr/code/autoquiz/target/scala-2.13/autoquiz_v0.0.5-SNAPSHOT.jar"
   interp.load.cp(ammonite.ops.Path(libpath))
   import autoquiz._, Targets.{ TargetFolder, Relpath }
-  interp.load.ivy("org.typelevel" %% "cats-core" % "2.1.0")
+  interp.load.ivy("org.typelevel" %% "cats-core" % "2.1.1")
   import cats.data.{ NonEmptyList => NEL }
   import cats.syntax.list._
-  interp.load.ivy("org.typelevel" % "mouse_2.12" % "0.19")
+  interp.load.ivy("org.typelevel" % "mouse_2.13" % "0.25")
   import mouse.boolean._
-  interp.load.ivy("io.circe" %% "circe-core" % "0.12.3")
+  interp.load.ivy("io.circe" %% "circe-core" % "0.13.0")
   import io.circe._
   
   def parse2Nel: Either[Error, List[TexQA]] => NEL[TexQA] = _.toOption.get.toNel.get
@@ -60,7 +60,7 @@ object InteractiveTesting {
       case None => (Option.empty[File], List.empty[File], errFilePairs)
       case Some(trios) => {
         val outfile = new File("/home/vr/testtex/testQaOutAll.tex")
-        val preamble = standardPreamble("All Questions", "Vince Reuter", "April 5, 2020")
+        val preamble = standardPreamble("All Questions", "Vince Reuter", "June 9, 2020")
         val (files, groups) = trios.toList.foldRight(
           List.empty[File] -> List.empty[(String, NEL[TexQA])]){ 
             case ((n, f, qas), (fs, gs)) => (f :: fs, (n, qas) :: gs) }
@@ -74,6 +74,7 @@ object InteractiveTesting {
     import cats.instances.string._, cats.syntax.eq._
     _.getName === "09-DNA-Replication-Telomeres.QandA.json"
   }
+
   val (maybeTestF, processedInfiles, inErrPairs) = writeAllQA(isMbgeneTelomeresFile)
   maybeTestF.fold(println("No TeX source to make")){ f => println(Writing.pdftex(f, Relpath("target"))) }
 

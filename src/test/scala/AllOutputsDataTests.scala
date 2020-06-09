@@ -43,10 +43,10 @@ class AllOutputsDataTests {
 
   def makeDate: String = {
     val d = LocalDate.now()
-    val m = d.getMonth.split("") match {
+    val m = d.getMonth.toString.split("").toList match {
       case h :: t => (h :: t.map(_.toLowerCase)) mkString ""
     }
-    s"${m} ${d.getDat}, ${d.getYear}"
+    s"${m} ${d.getDayOfMonth}, ${d.getYear}"
   }
 
   implicit val myRender = RenderQA(
