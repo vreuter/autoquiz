@@ -25,7 +25,7 @@ object Writing {
     import scala.sys.process._
     val outfile = new File(out.texOutFolder(texfile), texfile.getName)
     val progPath = {
-      try { Right(Seq("which", "pdflatex").lineStream.head) }
+      try { Right(Seq("which", "pdflatex").lazyLines.head) }
       catch { case e: RuntimeException => Left(outfile -> e) }
     }
     progPath flatMap { tex2Pdf(texfile, out, _: String) }
@@ -49,7 +49,7 @@ object Writing {
         case (false, false) => { Left[(File, RuntimeException), File](
           outfile -> new RuntimeException(s"Target folder missing: $outdir")) }
       }
-      lastLine <- try { Right(cmd.lineStream.last) } catch { case e: RuntimeException => Left(outfile -> e) }
+      lastLine <- try { Right(cmd.lazyLines.last) } catch { case e: RuntimeException => Left(outfile -> e) }
       res <- lastLine.startsWith("Transcript written on").either(
         outfile -> new RuntimeException(s"Suspicious last log line: $lastLine"), outfile)
     } yield res

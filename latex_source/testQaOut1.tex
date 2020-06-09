@@ -1,0 +1,104 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\usepackage{dirtytalk}
+\usepackage{enumitem}
+\newenvironment{QandA}{\begin{enumerate}[label=\bfseries Q\arabic*.]}
+                       {\end{enumerate}}
+\newenvironment{answered}{\par\normalfont\underline{Answer:}}{}
+
+\title{Test}
+\author{Vince}
+\date{Feb. 16}
+
+\begin{document}
+
+\maketitle
+
+\section{General}
+\begin{QandA}
+  \item{Why care about interactions between nucleic acids and proteins? Why are they important?}
+    \begin{answered}
+    \begin{itemize}
+      \item{Events' \textbf{\textit{timing} specificity} (think TF concentration in \textbf{developmental \textit{stage}})}
+      \item{Events' \textbf{\textit{spatial} specificity} (think TF concentration in \textbf{subsellular \textit{compartment}})}
+    \end{itemize}
+    \end{answered}
+  \item{Describe/characterize the \textit{relative merits} / \say{tradeoff} of virtue between EMSA and footprinting methods.}
+    \begin{answered}
+    \textbf{\textit{Sensitivity} vs. \textit{specificity:}} EMSA is more sensitive (looser robustness requirement for probe binding by protein), but it provides a coarser picture / less resolution than footprinting for \textit{where} a protein of interest binds.
+    \end{answered}
+  \item{What's a key piece of information likely to be of interest that \textit{neither EMSA nor a footprinting method} provides? What class of method does?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{Protein identity:} neither EMSA nor footprinting provides much information about the identity of protein binding.}
+      \item{ChIP (chromatin immunoprecipitation) methods aim provide binding protein identity information.}
+    \end{itemize}
+    \end{answered}
+\end{QandA}
+\section{EMSA}
+\begin{QandA}
+  \item{What's EMSA stand for?}
+    \begin{answered}
+    Electophoretic mobility shift assay
+    \end{answered}
+  \item{What's EMSA measure directly?}
+    \begin{answered}
+    EMSA measures the \textbf{distance traveled} by a biomolecule or biomolecular process, though a polyacrylamide gel
+    \end{answered}
+  \item{Broadly speaking, how does PAGE/gel electophoresis work? How does it provide a readout of intermolecular binding?}
+    \begin{answered}
+    \begin{itemize}
+      \item{1. Gel impedes movement as negatively charged molecules migrate away from negative source}
+      \item{2. Larger molecules experience stronger resistance}
+      \item{3. More binding means larger molecular complexes.}
+      \item{4. $d = rt \land \text{ } r \propto \text{ molecular (complex) size}$}
+    \end{itemize}
+    \end{answered}
+  \item{What biomolecular phenomenon does EMSA aim to measure?}
+    \begin{answered}
+    EMSA aims to measure binding between proteins and nucleic acids (and proteins-to-proteins). Most generally, EMSA/PAGE/shift assays measure molecular (complex) size
+    \end{answered}
+  \item{What two main kinds of labeling are used to detect complexes in a shift assay?}
+    \begin{answered}
+    \begin{itemize}
+      \item{Fluorescent (fluorphore conjugation)}
+      \item{Autoradiography (make one end of nucleic acid radioactive)}
+    \end{itemize}
+    \end{answered}
+  \item{What main precaution must be taken when using a fluorophore to label molecules for detection in a shift assay?}
+    \begin{answered}
+    The fluorophore must not interfere with binding between the molecules of interest
+    \end{answered}
+  \item{In simplest form, EMSA provides information, e.g., \textbf{that \textit{a}} protein bound DNA, but \textbf{not \textit{which specific} protein(s)} bound DNA. How can that be assessed?}
+    \begin{answered}
+    \textbf{Antibody \textit{supershift.}} Antibody binding can be protein-specific, and thus will specifically decrease mobility of compatible protein(s), allowing identity inference.
+    \end{answered}
+  \item{How may the presence of multiple proteins simultaneously binding to DNA be examined, via shift assay?}
+    \begin{answered}
+    Each binding event will increase size and weight of the molecular complex, further reducing its mobility
+    \end{answered}
+  \item{EMSA says nothing about \textbf{\textit{specific} sequence} bound by a protein, just about a larger fragment. How to \textit{hone in?}}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{Directed mutagenesis:} specific subsequence(s) within bound fragment(s) may be targeted for mutation}
+      \item{\textbf{Excess oligomer:} relative to the initial fragment(s), smaller hypothesized oligomers for binding can be added, and will \say{soak up} protein binding}
+    \end{itemize}
+    \end{answered}
+  \item{In what 2 main ways may the search space for sequence specificity me reduced?}
+    \begin{answered}
+    \begin{itemize}
+      \item{Prior empirical findings}
+      \item{Established sequence conservation}
+    \end{itemize}
+    \end{answered}
+  \item{What are \textit{2 main \textbf{weaknesses}} of EMSA? How may each be addressed?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{\textit{Identity} of binding partner(s):} EMSA doesn't directly provide information about \textit{which specific} protein(s) are binding, just the added size.}
+      \item{\textbf{\textit{Identity} of binding partner(s)} may be addressed by \textbf{specific antibody binding;} an antibody will \textit{selectively \textbf{decrease mobility,}} specifically when its complementary protein is bound. This requires \textbf{antibody availability,} though.}
+      \item{\textbf{\textit{Sequence specificity:}} EMSA says binding occurs to a fragment, but not \textit{which part(s)} (subsequences/\say{motif(s)}) of the fragment.}
+      \item{\textbf{\textit{Sequence specificity}} may be addressed by either \textbf{directed \textit{mutagenesis}} or addition of \textbf{excess putative oligomer}}
+    \end{itemize}
+    \end{answered}
+\end{QandA}
+\end{document}

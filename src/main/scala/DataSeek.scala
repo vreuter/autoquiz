@@ -22,7 +22,7 @@ object DataSeek {
     require(root.isDirectory, s"Search root isn't a directory: ${root}")
     val cmd = Seq("find", root.getPath, "-type", "f", "-name", s"*$ext")
     println(s"Command: ${cmd mkString " "}")
-    cmd.lineStream.toList map { fp => new File(fp) }
+    cmd.lazyLines.toList map { fp => new File(fp) }
   }
 
 
