@@ -17,7 +17,7 @@ libraryDependencies += "org.typelevel" %% "cats-core" % "2.1.1"
 libraryDependencies += "org.typelevel" % "mouse_2.13" % "0.25"
 
 // JSON encoding, decoding and rendering
-val circeVersion = "0.12.3"
+val circeVersion = "0.13.0"
 libraryDependencies ++= Seq(
   "io.circe" %% "circe-core",
   "io.circe" %% "circe-generic",
