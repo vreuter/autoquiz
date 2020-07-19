@@ -1,0 +1,843 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\usepackage{dirtytalk}
+\usepackage{enumitem}
+\usepackage[a4paper,bindingoffset=0.2in,%
+             left=0.75in,right=0.75in,top=0.75in,bottom=0.75in,%
+             footskip=.25in]{geometry}
+\newenvironment{QandA}{\begin{enumerate}[label=\bfseries Q\arabic*.]}
+                       {\end{enumerate}}
+\newenvironment{answered}{\par\normalfont\underline{Answer:}}{}
+
+\title{All Questions}
+\author{Vince Reuter}
+\date{July 11, 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Evolutionary Classifications}
+\begin{QandA}
+  \item{What are the 3 clades of extant mammals?}
+    \begin{answered}
+    \begin{itemize}
+      \item{Monotremes}
+      \item{\textit{Metatheria} (marsupials)}
+      \item{\textit{Eutheria} (\textit{placentalia})}
+    \end{itemize}
+    \end{answered}
+  \item{What anatomical feature allows particularly long gestation in one of the clades? How?}
+    \begin{answered}
+    The lack of an epipubic bone in Eutherians allows abdomenal expansion during pregnancy, in turn allowing longer gestation
+    \end{answered}
+  \item{What are the extant species of monotremes?}
+    \begin{answered}
+    \begin{itemize}
+      \item{Platypus}
+      \item{4 different kinds of Echidna}
+    \end{itemize}
+    \end{answered}
+  \item{Where are the monotremes found?}
+    \begin{answered}
+    All 5 extant monotremes are in Australia.
+    \end{answered}
+\end{QandA}
+\section{Telomeres}
+\begin{QandA}
+  \item{\textbf{Telomere binding proteins (TBPs):} which protein is primarily responsible for \textit{preventing end-to-end fusions} of chromosomes? How so?}
+    \begin{answered}
+    \textbf{\textit{TRF2}} prevents end-to-end fusions (NHEJ) by preventing tetramerization (?) of \textit{Ku} proteins (spec., \textit{Ku70} and \textit{Ku80}) that would normally lead to NHEJ.
+    \end{answered}
+\end{QandA}
+\section{Nucleosomes}
+\begin{QandA}
+  \item{What fundamental properties of histones that set them apart from most proteins account for excellent performance of function as DNA packaging proteins?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{Size:} each of the histone proteins is quite small, useful for a functional role in a tight space like the nucleus, and for \textit{finer resolution} positioning}
+      \item{\textbf{Charge/pH:} DNA is negatively charged and generally acidic (yielding protons in solution); histones have many \textit{basic} AA side chains (among highest combined K and R proportion of all proteins), strongly electrostatically attracting DNA.}
+    \end{itemize}
+    \end{answered}
+  \item{What property of histones across species suggests their centrality of function to eukaryotic life?}
+    \begin{answered}
+    The histones are among the most highly conserved proteins, typically differing by just $2-5$ amino acids.
+    \end{answered}
+  \item{What structural feature of histones is both functionally essential and conserved in their evolutionary history?}
+    \begin{answered}
+    The \textit{histone fold} domain is essential for the \say{handshake} by which the octamer forms, and it's the domain that's shared by the nucleosomal histones.
+    \end{answered}
+\end{QandA}
+\section{Balancer Chromosomes}
+\begin{QandA}
+  \item{What's a \textbf{\textit{balancer} chromosome?}}
+    \begin{answered}
+    A balancer chromosome is an artificial/synthetic/genetically engineered construct that features a number of structural variants designed to \textit{inhibit recombination.}
+    \end{answered}
+  \item{What are 3 key properties of a balancer chromosome?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{Prevention of crossing over,} allowing a line with known mutations to be maintained without needing to constantly screen for the desired mutations}
+      \item{\textbf{Homozygous lethality:} a balancer carries some recessive lethal allele, such that homozygosity is lethal (i.e., any balancer carrier is heterozygous.)}
+      \item{\textbf{Dominant \textit{marker(s):}} a good balancer carries marker gene(s) that facilitate visual identification and/or selection, e.g. via poison}
+    \end{itemize}
+    \end{answered}
+  \item{Why do balancer chromosomes accumulate so many variants, particularly deletions and large structural variants o/w likely to be harmful?}
+    \begin{answered}
+    Since they're \textit{only found as heterozygotes,} balancer chromosomes are subject to \textit{much \textbf{weaker negative selection}} against harmful variants.
+    \end{answered}
+  \item{How does a balancer chromosome prevent recombination (crossover suppression, i.e. preclude meiotic synapsis)?}
+    \begin{answered}
+    The inversions tend to prevent recognition of the homologous chromosome relationship.
+    \end{answered}
+  \item{What if, despite the inversions' tendency to suppress recombination, a balancer chromosome recombines with a homolog?}
+    \begin{answered}
+    The structural aberrations that will result from recombination between a balancer and its homolog should \textit{confer \textbf{lethality,}} preventing a population that should be heterozygous from coming to include homozyogtes.
+    \end{answered}
+\end{QandA}
+\section{Experimental Methods General}
+\begin{QandA}
+  \item{What are the two main wins of \textit{in situ} Hi-C compared to standard (dilution) Hi-C?}
+    \begin{answered}
+    
+    \end{answered}
+  \item{What's the meaning of the \textit{in situ} portion of \textit{in situ} Hi-C? How's it differ from dilution Hi-C?}
+    \begin{answered}
+    The \textit{in situ} potion of \textit{in situ} Hi-C means that 
+    \end{answered}
+  \item{How does \textit{in situ} Hi-C attain its main wins relative to dilution Hi-C?}
+    \begin{answered}
+    \begin{itemize}
+      \item{For greater resolution, \textit{in situ} Hi-C (at least the Rao/Lieberman-Aiden original from 2014) deployed a 4-cutter rather than a 6-cutter restriction enzyme.}
+      \item{The \textit{in situ} aspect of \textit{in situ} Hi-C actually appears to reduce artifactual ligation events that can occur in dilution Hi-C. }
+    \end{itemize}
+    \end{answered}
+  \item{Why/how does \textit{hydroxyurea} stall DNA replication}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{Ribonucleotide reductase (RNR)} is an enzyme that reduces ribose (specifically, the 2' carbon) to deoxyribose by removing the hydroxyl group from 2' carbon.}
+      \item{Hydroxyurea inhibits the catalytic activity of RNR, limiting the pool of dNTPs (DNA replication raw materials) in the cell.}
+    \end{itemize}
+    \end{answered}
+  \item{Why may PCR on extract from cell culture or from a genetically engineered animal, after conditionally deleting an allele, still have \textit{some} minor signal from the deletion target?}
+    \begin{answered}
+    These are \textit{populations} of cells (bulk) from which the material for PCR is being taken, and \textit{recombination will likely be incomplete/nonuniversal.}
+    \end{answered}
+  \item{Why use a method like 3/4/5-C over Hi-C? What's an additional requirement, especially for 3/4C?}
+    \begin{answered}
+    \begin{itemize}
+      \item{The \say{lower} C-based methods provide \textit{greater granularity/resolution} relative to Hi-C.}
+      \item{There's an inherent cost savings that only having a restricted regional interest (i.e., not genome-wide) allows to leverage, since we need not sequence so much.}
+      \item{The methods require specific regional primer design, and to have restricted interest/focus to one or a few loci.}
+    \end{itemize}
+    \end{answered}
+  \item{\textbf{\textit{Capture-C} vs. \textit{traditional 3C}} What improvement does Capture-C make relative to traditional 3C?}
+    \begin{answered}
+    Capture-C adds \textit{biotinylation-based pulldown} for better purification of the library (?)
+    \end{answered}
+\end{QandA}
+\section{Body Sections Axes Planes}
+\begin{QandA}
+  \item{What are the 3 main \say{slices,} or \say{sections,} of tissue that may be taken?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textit{Coronal/frontal:} an instance of a longitudinal plane, the coronal plane runs parallel to the long body axis, perpendicular to the transverse plane, dividing dorsal from ventral}
+      \item{\textit{: }}
+      \item{\textit{Sagittal/longitudinal/median: }}
+    \end{itemize}
+    \end{answered}
+  \item{Which body plane does the coronal plane intersect as a vertical line?}
+    \begin{answered}
+    The coronal plane intersects the sagittal plane as a vertical line.
+    \end{answered}
+  \item{Which body plane does the coronal plane intersect as a horizontal line?}
+    \begin{answered}
+    The coronal plane intersects the transverse plane as a horizontal line.
+    \end{answered}
+  \item{Which two body poles does the coronal plane separate?}
+    \begin{answered}
+    The coronal plane separates ventral from dorsal.
+    \end{answered}
+  \item{Which body plane does the sagittal plane intersect as a vertical line?}
+    \begin{answered}
+    The sagittal plane intersects the coronal plane as a vertical line.
+    \end{answered}
+  \item{Which body plane does the sagittal plane intersect as a horizontal line?}
+    \begin{answered}
+    The sagittal plane intersects the transverse plane as a horizontal line.
+    \end{answered}
+  \item{Which body poles does the sagittal plane divide/define?}
+    \begin{answered}
+    The sagittal plane defines/divides the left and right. Any non-median sagittal plane implies a lateral vs. medial division.
+    \end{answered}
+  \item{To which two body planes is the transverse plane perpendicular}
+    \begin{answered}
+    A transverse plane is perpendicular to both a sagittal plane and a coronal plane
+    \end{answered}
+  \item{Which two body poles does a transverse plane define/divide?}
+    \begin{answered}
+    A transverse plane divides anterior from posterior.
+    \end{answered}
+\end{QandA}
+\section{Bioinformatics File Formats}
+\begin{QandA}
+  \item{Descibe the BED coordinate system.}
+    \begin{answered}
+    BED uses 0-based inclusive starts and exclusive ends, so a half-open interval; the first nucleotide has 0 start and 1 end.
+    \end{answered}
+  \item{What justifies the (perhaps quirky) BED coordinate system choice?}
+    \begin{answered}
+    Computation time justifies BED coordinates; specifically, length of a region/feature becomes simple subtraction of start from end.
+    \end{answered}
+\end{QandA}
+\section{Analytical Methods}
+\begin{QandA}
+  \item{In which kind of graph/plot does a \textbf{power law} reveal itself as a \textbf{linear} relationship? Why?}
+    \begin{answered}
+    \begin{itemize}
+      \item{A \textbf{power law} relation between variables is revealed as a \textit{linear} visualization in a \textbf{log-log plot}.}
+      \item{$y = b x^a \implies \operatorname{log}(y) = a \operatorname{log}(x) + b$, so taking logs gives a linear equation relating log-response to log-input, with power as slope.}
+    \end{itemize}
+    \end{answered}
+\end{QandA}
+\section{DNA repair}
+\begin{QandA}
+  \item{What is \textit{DNA \textbf{resection?}}}
+    \begin{answered}
+    DNA resection is the \textit{exonucleolytic \say{chewback}} of bases, typically from a double-stranded break
+    \end{answered}
+  \item{In what processes is \textit{DNA \textbf{resection}} a key step/subprocess?}
+    \begin{answered}
+    \textbf{\textit{DNA repair}}, via \textit{homologous recombination (HR):} DNA resection is critical for the homologous recombination (HR), typically as part of the \textit{double-stranded break repair \textbf{(DSBR)}} response.
+    \end{answered}
+  \item{How does \textit{DNA \textbf{resection}} perform its function (facilitation of initiation of HR)?}
+    \begin{answered}
+    DNA resection \textit{creates \textbf{3' overhang,}} forming the ssDNA that will perform the \textbf{strand \textit{invasion}} step of HR, invading a nearby duplex region.
+    \end{answered}
+  \item{\textbf{\textit{Double} strand break repair (DSBR):} The balance between which 2 proteins is a primary determinant of the procession and pathway chosen for DSBR? How So?}
+    \begin{answered}
+    The balance between \textit{BRCA1} and \textit{TP53BP1} is a major determinant of the balance between candidate DBSR pathways, exerting great influence over which pathway is chosen.
+    \end{answered}
+  \item{What process does \textit{TP53BP1} disfavor, and how does that influence a cell's response to / pathway chosen for double-stranded break repair (DSBR)?}
+    \begin{answered}
+    \textit{TP53BP1} disfavors end resection. Since end \textit{resection promotes HR,} TP53BP1 tilts the balance of power away from HR and in favor of more error-prone NHEJ, which is worse for the cell.
+    \end{answered}
+  \item{Which process does \textit{BRCA1/2} favor, and how does that influence a cell's response to / pathway chosen for DSBR?}
+    \begin{answered}
+    \textit{BRCA1/2} associate with \textit{Rad51} to help initiate/facilitate/orchestrate \textbf{homologous recombination.} As such, cells deficient in those proteins will tend to more frequently use NHEJ to repair double-strand DNA break damage, leading to more costly and dangerous repair errors.
+    \end{answered}
+\end{QandA}
+\section{General}
+\begin{QandA}
+  \item{Why care about interactions between nucleic acids and proteins? Why are they important?}
+    \begin{answered}
+    \begin{itemize}
+      \item{Events' \textbf{\textit{timing} specificity} (think TF concentration in \textbf{developmental \textit{stage}})}
+      \item{Events' \textbf{\textit{spatial} specificity} (think TF concentration in \textbf{subsellular \textit{compartment}})}
+    \end{itemize}
+    \end{answered}
+  \item{Describe/characterize the \textit{relative merits} / \say{tradeoff} of virtue between EMSA and footprinting methods.}
+    \begin{answered}
+    \textbf{\textit{Sensitivity} vs. \textit{specificity:}} EMSA is more sensitive (looser robustness requirement for probe binding by protein), but it provides a coarser picture / less resolution than footprinting for \textit{where} a protein of interest binds.
+    \end{answered}
+  \item{What's a key piece of information likely to be of interest that \textit{neither EMSA nor a footprinting method} provides? What class of method does?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{Protein identity:} neither EMSA nor footprinting provides much information about the identity of protein binding.}
+      \item{ChIP (chromatin immunoprecipitation) methods aim provide binding protein identity information.}
+    \end{itemize}
+    \end{answered}
+\end{QandA}
+\section{ChIP}
+\begin{QandA}
+  \item{What are the 2 main ChIP kinds/strategies and how do they differ?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{\textit{Primer}-based ChIP} targets a specific, \textit{individual} region of interest.}
+      \item{\textbf{\textit{Chip}- or \textit{Sequencing}-based CHIP} (ChIP-Chip and ChIP-seq, respectively) can examine an \textit{entire genome} for evidence of protein binding.}
+    \end{itemize}
+    \end{answered}
+  \item{Briefly describe \textbf{ChIP-PCR.} How is it used relative to other ChIP methods? What're strengths/weaknesses relative to other ChIP methods?}
+    \begin{answered}
+    \begin{itemize}
+      \item{As with any other chromatin immunoprecipitation method, the availability of an antibody specific for a protein, a complex, or a modification of interest is critical.}
+      \item{DNA abundance is quantified and compared between an experimental and control sample group; experimental/treatment receives specific antibody while control receives nothing or a nonspecific antibody.}
+      \item{\textbf{\textit{Scope} difference:} a key difference with other ChIP methods is in the scope of investigation; ChIP-PCR examines one or few loci while others can examine many.}
+      \item{The \textit{scope limitation} arises from the \textit{need to design primers.} Primers targeting a control (expected unbound) locus and the region(s) of interest must be designed.}
+      \item{Owing to limited scope, ChIP-PCR is typically deployed where the line of inquiry is either \textit{\textbf{locally specific} to a region,} or as a \textbf{cost-effective \textit{control}} for a method with broader scope.}
+      \item{Strength : cost :: weakness : scope}
+    \end{itemize}
+    \end{answered}
+  \item{What are the \textit{main \textbf{validation} questions} to address in a \textbf{ChIP-PCR} experiment?}
+    \begin{answered}
+    \begin{itemize}
+      \item{Interest is to compare control amplicon vs. target amplicon in \textit{\textbf{input} DNA} (no/nonspecific antibody) for \textbf{\textit{primer bias,}} and to compare control amplicon vs. target in \textit{\textbf{treated} DNA} to assess \textbf{\textit{antibody efficacy.}}}
+      \item{\textbf{\textit{Antibody} efficacy:} If the antibody effectively binds the protein/complex/modification of interest, the treatment samples' target region should be enriched (lower cycle threshold) relative to those samples' control region. This suggests that the antibody's sensitive and specific.}
+      \item{\textbf{\textit{Primer} efficacy/bias:} targeting a \textbf{\textit{control} locus/amplicon} helps to \textit{establish a \textbf{baseline}} for amplification of the respective regions. Then we can \textit{compare the \textbf{change in CT}} for a given sample. This facilitates comparison of the target to control in the treated sample, which is ultimately what we're after.}
+      \item{\underline{Example:}}
+      \begin{enumerate}
+        \item{In input DNA, both the control amplicon and the target amplicon show CT of 27.}
+        \item{In the IP sample(s), the control amplicon has CT of 30 while treated (specific Ab) samples have CT of 27. This implies $8x = 2^{3}x$ enrichment of the target.}
+        \item{We can use the raw difference in the CT between the regions in the treated sample because the baseline difference is $0 = 27 - 27$ between the amplicons in the input DNA.}
+      \end{enumerate}
+    \end{itemize}
+    \end{answered}
+  \item{What's \textbf{\textit{cycle threshold?}} What information does it provide?}
+    \begin{answered}
+    \begin{itemize}
+      \item{The \textbf{cycle threshold} is the \textit{number of PCR cycles} needed to sufficiently amplify some region of interest for detection by whatever machine (spectrophotometer?)}
+      \item{The CT is a \textit{measure of \textbf{abundance}} (of molecules). Each PCR cycle amplifies (in theory) each molecule 2x, so abundance is inversely exponentially proportional to the CT.}
+    \end{itemize}
+    \end{answered}
+\end{QandA}
+\section{EMSA}
+\begin{QandA}
+  \item{What's EMSA stand for?}
+    \begin{answered}
+    Electophoretic mobility shift assay
+    \end{answered}
+  \item{What's EMSA measure directly?}
+    \begin{answered}
+    EMSA measures the \textbf{distance traveled} by a biomolecule or biomolecular process, though a polyacrylamide gel
+    \end{answered}
+  \item{Broadly speaking, how does PAGE/gel electophoresis work? How does it provide a readout of intermolecular binding?}
+    \begin{answered}
+    \begin{itemize}
+      \item{1. Gel impedes movement as negatively charged molecules migrate away from negative source}
+      \item{2. Larger molecules experience stronger resistance}
+      \item{3. More binding means larger molecular complexes.}
+      \item{4. $d = rt \land \text{ } r \propto \text{ molecular (complex) size}$}
+    \end{itemize}
+    \end{answered}
+  \item{What biomolecular phenomenon does EMSA aim to measure?}
+    \begin{answered}
+    EMSA aims to measure binding between proteins and nucleic acids (and proteins-to-proteins). Most generally, EMSA/PAGE/shift assays measure molecular (complex) size
+    \end{answered}
+  \item{What two main kinds of labeling are used to detect complexes in a shift assay?}
+    \begin{answered}
+    \begin{itemize}
+      \item{Fluorescent (fluorphore conjugation)}
+      \item{Autoradiography (make one end of nucleic acid radioactive)}
+    \end{itemize}
+    \end{answered}
+  \item{What main precaution must be taken when using a fluorophore to label molecules for detection in a shift assay?}
+    \begin{answered}
+    The fluorophore must not interfere with binding between the molecules of interest
+    \end{answered}
+  \item{In simplest form, EMSA provides information, e.g., \textbf{that \textit{a}} protein bound DNA, but \textbf{not \textit{which specific} protein(s)} bound DNA. How can that be assessed?}
+    \begin{answered}
+    \textbf{Antibody \textit{supershift.}} Antibody binding can be protein-specific, and thus will specifically decrease mobility of compatible protein(s), allowing identity inference.
+    \end{answered}
+  \item{How may the presence of multiple proteins simultaneously binding to DNA be examined, via shift assay?}
+    \begin{answered}
+    Each binding event will increase size and weight of the molecular complex, further reducing its mobility
+    \end{answered}
+  \item{EMSA says nothing about \textbf{\textit{specific} sequence} bound by a protein, just about a larger fragment. How to \textit{hone in?}}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{Directed mutagenesis:} specific subsequence(s) within bound fragment(s) may be targeted for mutation}
+      \item{\textbf{Excess oligomer:} relative to the initial fragment(s), smaller hypothesized oligomers for binding can be added, and will \say{soak up} protein binding}
+    \end{itemize}
+    \end{answered}
+  \item{In what 2 main ways may the search space for sequence specificity me reduced?}
+    \begin{answered}
+    \begin{itemize}
+      \item{Prior empirical findings}
+      \item{Established sequence conservation}
+    \end{itemize}
+    \end{answered}
+  \item{What are \textit{2 main \textbf{weaknesses}} of EMSA? How may each be addressed?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{\textit{Identity} of binding partner(s):} EMSA doesn't directly provide information about \textit{which specific} protein(s) are binding, just the added size.}
+      \item{\textbf{\textit{Identity} of binding partner(s)} may be addressed by \textbf{specific antibody binding;} an antibody will \textit{selectively \textbf{decrease mobility,}} specifically when its complementary protein is bound. This requires \textbf{antibody availability,} though.}
+      \item{\textbf{\textit{Sequence specificity:}} EMSA says binding occurs to a fragment, but not \textit{which part(s)} (subsequences/\say{motif(s)}) of the fragment.}
+      \item{\textbf{\textit{Sequence specificity}} may be addressed by either \textbf{directed \textit{mutagenesis}} or addition of \textbf{excess putative oligomer}}
+    \end{itemize}
+    \end{answered}
+\end{QandA}
+\section{Footprinting Methods}
+\begin{QandA}
+  \item{Why do footprinting methods \textit{require more robust binding} between DNA probe and protein of interest?}
+    \begin{answered}
+    Each in this class of methods leverages \textit{\textbf{lack} of signal} as its source of information, so to generate enough \say{background} signal, binding must be robust
+    \end{answered}
+  \item{What's are \textbf{2 main \textit{weaknesses}} of footprinting methods? How may each be addressed?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{Robust requirement:} the requirement for more robust (relative to EMSA) protein binding to probe cannot really be ameliorated.}
+      \item{\textbf{Protein identity lack:} as with EMSA, the identity of the protein isn't apparent from footprinting data. Unlike with EMSA, there's not a great way to discern this.}
+    \end{itemize}
+    \end{answered}
+  \item{What's a major strength of footprinting methods relative to EMSA?}
+    \begin{answered}
+    \textbf{Finer \textit{resolution:}} Each footprinting method provides much more fine-grained detail about \textit{\textbf{where} the protein of interest binds.}
+    \end{answered}
+  \item{Name and briefly describe each of the \textbf{3 main footprinting methods.}}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{\textit{Nuclease} footprinting:} }
+      \item{\textbf{\textit{Chemical} footprinting:} }
+      \item{\textbf{\textit{Chemical interference} footprinting:} }
+    \end{itemize}
+    \end{answered}
+  \item{What are the main steps/principles in nuclease and chemical footprinting?}
+    \begin{answered}
+    \begin{itemize}
+      \item{Label DNA with a radioactivity or with a fluorophore}
+      \item{Incubation to allow protein binding}
+      \item{Introduction of fragment breaks (nuclease or chemical)}
+      \item{Run gel elecrophoresis}
+      \item{Infer location of protection from \say{hole} in the fragment size distribution (where presumably the protein of interest bound)}
+    \end{itemize}
+    \end{answered}
+  \item{Why should titration be done to aim for about one fragment break per probe?}
+    \begin{answered}
+    Since the label is at just one end of the DNA molecule, only the length of the first fragment in the linear sequence will be observed.
+    \end{answered}
+  \item{How does \textbf{chemical \textit{interference}} footprinting work?}
+    \begin{answered}
+    Chemically induce DNA probe breakoints that distort the molecule and see which do or don't impair binding. Effectful alterations are inferred to be where the protein binds.
+    \end{answered}
+  \item{The order of which 2 main footprinting steps is reversed for chemical interference footprinting?}
+    \begin{answered}
+    Induction of fragment breaks comes before incubation for protein binding, since the assay leverages impairment of protein binding by the breaks, rather than the binding's protection from breaks.
+    \end{answered}
+  \item{Unlike EMSA, with a footprinting method why is there not a straightforward way to tackle protein binding identity?}
+    \begin{answered}
+    Footprinting leverage signal absence. There's no way to specifically target a void. There's no way to get more information from a null and still have it be a null.
+    \end{answered}
+\end{QandA}
+\section{SELEX}
+\begin{QandA}
+  \item{What's \textbf{SELEX} stand for?}
+    \begin{answered}
+    \textbf{SELEX} is the systematic evolution of ligands by exponential enrichment.
+    \end{answered}
+  \item{Briefly describe the SELEX steps.}
+    \begin{answered}
+    \begin{itemize}
+      \item{1. Create \textit{combinatorial library} of DNA molecules, each with primers flanking a randomized sequence region}
+      \item{2. }
+    \end{itemize}
+    \end{answered}
+  \item{Why does SELEX necessarily rely on PCR (amplification)?}
+    \begin{answered}
+    Each unique molecule in the combinatorial DNA library is very unlikely to bind strongly to the protein of interest, and each molecule that does will be few in number.
+    \end{answered}
+  \item{Typically, about how large is the combinatorial region of each DNA molecule in the library?}
+    \begin{answered}
+    Similar to TF motifs (analogous \textit{in vivo} biological application), each combinatorial region is usually about $10-12$ bp. 
+    \end{answered}
+  \item{What are the main components of each DNA molecule in the combinatorial library?}
+    \begin{answered}
+    \begin{itemize}
+      \item{Each molecule has a $10-12$ bp randomized region in the middle (synthetic binding site to test).}
+      \item{Each randomized test region is flanked by primers to facilitate amplification via PCR.}
+    \end{itemize}
+    \end{answered}
+  \item{What are the \textbf{two main methods for purifying/selecting} protein-bound molecules after incubation of DNA with the protein of interest?}
+    \begin{answered}
+    \begin{itemize}
+      \item{Generally, \textbf{EMSA} (electrophoretic mobility shift assay) may be used, as the protein-bound DNA molecules will be larger and more unusually shaped.}
+      \item{Alternatively, if an antibody against the protein of interest is available, purification/selection may be done via \textbf{immunoprecipitation.}}
+    \end{itemize}
+    \end{answered}
+\end{QandA}
+\section{DNA Replication General}
+\begin{QandA}
+  \item{\textbf{Replication \textit{safety/security:}} Name and describe the replication machine/enzyme that's tightly cell cycle regulated to assure \textit{exactly one} replication per cycle?}
+    \begin{answered}
+    \begin{itemize}
+      \item{The \textbf{replicative \textit{helicase}} is tightly coupled to the cell cycle to assure loading at necessary locations and only one period of activation per cell cycle.}
+      \item{In G1 helicases may be \textit{loaded but not active}; during the remainder of the cell cycle, \textit{loading's prohibited but activation is license.}}
+    \end{itemize}
+    \end{answered}
+\end{QandA}
+\section{classic experiments}
+\begin{QandA}
+  \item{\textbf{\textit{Transforming} principle:} which classical experiment demonstrated that DNA is the \say{transforming principle?} That is, that it's the kind of molecule that transformed bacteria from benign to virulent/pathogenic.}
+    \begin{answered}
+    The \textbf{Avery-McCarty-MacCleod} experiment showed that DNA is the transforming princple.
+    \end{answered}
+  \item{Briefly describe the \textbf{Avery-McCarty-MacCleod} experiment and its significance.}
+    \begin{answered}
+    \begin{itemize}
+      \item{1. Smooth bacteria are virulent, rough ones aren't; heat-killed smooth bacteria aren't virulent, nor are heat-killed rough ones.}
+      \item{2. Rough bacteria incubated with heat-killed smooth bacteria become virulent.}
+      \item{3. When incubating with parts (cell isolates) of heat-killed smooth bacteria, DNA is the only kind of molecule that confers virulence upon the rough bacteria.}
+      \item{4. We may infer that \textit{DNA is \say{taken up} by bacteria (as plasmid)} and confers functional properties that other molecules don't.}
+      \item{5. This \textit{clarified \textbf{Griffith's 1928 experiment}} that observed the transforming phenomenon when enjecting pairs of rough/smooth dead/live bacteria.}
+    \end{itemize}
+    \end{answered}
+  \item{Which fundamental biomolecular genetics question did the \textbf{Avery-McCarty-MacCleod} experiment address?}
+    \begin{answered}
+    The \textbf{Avery-McCarty-MacCleod} addressed the \textit{transforming principle,} a sort of \textit{functional heredity,} showing that DNA is the only molecule so empowered.
+    \end{answered}
+  \item{Which fundamental question did the \textbf{\textit{Meselson-Stahl} experiment} address?}
+    \begin{answered}
+    The \textbf{{Meselson-Stahl} experiment} addressed the \textit{\textbf{mode} of DNA replication,} demonstrating that it's \textbf{semiconservative.}
+    \end{answered}
+  \item{\textit{How} did the Meselson-Stahl experiment address the question of mode of DNA replication?}
+    \begin{answered}
+    \textbf{Isotope labeling:} the experimental design used an alternate \textit{nitrogen isotope}, showing that it's proportional contribution to each DNA molecule diminished over time.
+    \end{answered}
+  \item{What was the experimental/observational readout from the Meselson-Stahl experiment? That is, how was the proportion of heavier nitrogen assessed?}
+    \begin{answered}
+    When run on a gel, a DNA molecule with more of the heavier nitrogen isotope moves more slowly and therefore travels a lesser distance.
+    \end{answered}
+  \item{How did the \textbf{Avery-McCarty-MacCleod} experiment address the alternative hypotheses that protein and/or RNA were responsible for bacterial transformation?}
+    \begin{answered}
+    \begin{itemize}
+      \item{The experiment used various \textit{digestive enzymes} that would break down members of alternative molecular classes like protein or RNA}
+      \item{Things like ribonucleases (RNA) and trypsin (protein) that break down some a non-DNA target did nothing to the transformational capability of cellular extract, but so-called deoxyribonucleopolymerase destroyed it.}
+    \end{itemize}
+    \end{answered}
+  \item{Describe the \textbf{Hershey-Chase} experiment.}
+    \begin{answered}
+    \begin{itemize}
+      \item{1. Label both S-35 and P-32, and incubate phages with those labeled isotopes.}
+      \item{2. Allow phages to infect cells.}
+      \item{3. See which labels go where during pathogenesis/invasion of host cell.}
+      \item{4. Sulfur outside $\implies$ protein doesn't really enter.}
+      \item{5. Phosphorus inside $\implies$ DNA does enter the cell.}
+    \end{itemize}
+    \end{answered}
+  \item{What was the significance of the \textbf{Hershey-Chase} experiment?}
+    \begin{answered}
+    The \textbf{Hershey-Chase} experiment further reinforced the idea that DNA is the transforming principle / encoding of heredity.
+    \end{answered}
+  \item{What biochemical difference between DNA and protein did the \textbf{Hershey-Chase} experiment leverage?}
+    \begin{answered}
+    DNA contains much more phosphorus than protein, while DNA contains no sulfur (but some amino acids and therefore protein do, plus disulfide bridges). Therefore, labeling phosphorus and sulfur distinguishes protein from DNA.
+    \end{answered}
+\end{QandA}
+\section{DNA repair HR}
+\begin{QandA}
+  \item{What's a major risk of mitotic HR that must be avoided? What danger does it typically pose? Molecularly, how is the solution strategy implemented?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textit{Loss of heterozygosity (\textbf{LOH})} is a major risk that a mitotic cell must avoid. That's when homologous recombination randomly selects the alternate allele rather than the sister chromatid for recombination.}
+      \item{Having 2 copies of each gene safeguards against a defective copy. Losing one copy increases the likelihood of no working copy, which is especially risky for cancer.}
+      \item{\textit{\textbf{Cohesin} wraps sister chromatids,} keeping them quite close together. The spatial proximity of sister chromatids relative to homologous chromosomes favors usage of the sister chromatid template.}
+    \end{itemize}
+    \end{answered}
+  \item{If \textit{\textbf{HR} requires a close match} between template and strand to repair, how can \textbf{LOH} occur?}
+    \begin{answered}
+    Because so much DNA is conserved between individuals, at a small scale with high probability \textit{maternal and paternal alleles will closely match.} The match may be close enough to satisfy HR.
+    \end{answered}
+\end{QandA}
+\section{DNA Structure}
+\begin{QandA}
+  \item{What are 4 main functions/traits that DNA must provide?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{Replicability} with high \textit{fidelity} and virtually without upper bound on number of replications}
+      \item{\textbf{Packaging/Compression:} spatial constraints of the cell and the nucleus means that an otherwise large linear genome must become small.}
+      \item{\textbf{\textit{Developmental} regulatory control:} DNA must provide the instructions with which organismal develompent may be orchestrated}
+      \item{\textbf{Day-to-day grind:} DNA must provide the instructions that a cell needs to make the proteins that it needs to function each day}
+    \end{itemize}
+    \end{answered}
+  \item{What main problem/question did the double helical structure solve?}
+    \begin{answered}
+    Replicability/generational passage: the \textit{complementary base pairing} and concomitant redundancy of information addressed the replicability mechanism question.
+    \end{answered}
+  \item{Which 2 main goals/objectives/purposes of DNA must its packaging balance?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{Accessibility:} the DNA must be packed in such a way that access for transcription and replication is easy}
+      \item{\textbf{Compression:} the DNA must be packed small enough to fit inside the tiny nucleus.}
+    \end{itemize}
+    \end{answered}
+  \item{Characterize the \textit{bond kinds} involved in the DNA double helix.}
+    \begin{answered}
+    \begin{itemize}
+      \item{In the sugar-phosphate \textbf{backbone} covalent bonds stabilize the double helical structure while the bases bond noncavently, with hydrogen bonds.}
+      \item{External : stronger : covalent :: internal : weaker : noncovalent}
+      \item{C-G : 3 :: A-T : 2}
+    \end{itemize}
+    \end{answered}
+  \item{Why are A-T bonds \say{weaker} than C-G bonds? What empirical property is often used as a metric for the strength?}
+    \begin{answered}
+    A-T pair with 2 hydrogen bonds rather than 3. \say{Melting} temperature (Tm) measures this. A-T rich DNA has a lower Tm than G-C rich DNA.
+    \end{answered}
+  \item{Why are the strands of the DNA double helix said to be \textit{antiparallel?} What gives \textbf{DNA \textit{directionality?}1}}
+    \begin{answered}
+    \textit{Asymmetry} in the chemical bonding linking together deoxybiose subunits of the \textit{backbone} is what gives DNA directionality and the \say{antiparallel} moniker.
+    \end{answered}
+  \item{What are some benefits of having antiparallel strands?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{\textit{Proofreading} mechanism:} the 5'-to-3' \textit{exnucleolytic proofreading} that allows DNA polymerase to boost its fidelity is enabled by DNA's directionality.}
+      \item{\textbf{Coding space:} while most relevant for prokaryotes and viruses with simple genomes, DNA's directionality means that \textit{genes may overlap}}
+    \end{itemize}
+    \end{answered}
+  \item{About what percentage of cell volume is the nucleus?}
+    \begin{answered}
+    About 10 percent.
+    \end{answered}
+  \item{What's a major logistical benefit of having a nucleus and nuclear envelope (i.e., walling off DNA from the rest of the cell)?}
+    \begin{answered}
+    The nucleus is an instance of the more general strategy of \textit{compartmentalization,} making desirable \textit{molecular collisions more likely.} It shifts the \textit{probability distribution}  of molecular collisions in a productive way.
+    \end{answered}
+  \item{Characterize the percentage of the human genome devoted to protein coding vs. repetitive elements}
+    \begin{answered}
+    \begin{itemize}
+      \item{Protein coding genome sequence is just about 1.5 percent of the total.}
+      \item{Repetitive, transposable elements account for nearly half of the human genome.}
+    \end{itemize}
+    \end{answered}
+  \item{How large is the average human gene, in total nucleotides base pairs and in amino acids (how main coding nucleotides?)}
+    \begin{answered}
+    \begin{itemize}
+      \item{The average human gene spans abut 27 Kb.}
+      \item{The average protein is only about 430 amino acids long, so about 1300 coding nucleotides.}
+    \end{itemize}
+    \end{answered}
+  \item{Briefly, what are the 3 main specialized regions of each chromosome that regulate its structure?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{Replication origins:} many in eukaryotes to expedite replication of huge genomes; typically (always?) just one in prokaryotes}
+      \item{\textbf{Centromere:} critically, there's \textit{one and \textbf{only one.}} Mitotic segregation won't occur if there's no centromere, chromosomes will fail to properly segregate during mitosis.}
+      \item{\textbf{Telomere:} distiguishing chromosome ends from breaks so that normal, healthy DNA tips aren't mistaken for DNA damage and then erroneously repaired}
+    \end{itemize}
+    \end{answered}
+  \item{DNA replication creates a structural problem for chromosomes: how to know when to stop and how to finish? How do prokaryotic and eukaryotic cells differ in their solution strategies?}
+    \begin{answered}
+    \begin{itemize}
+      \item{Prokaryotes use a \textit{circular genome.}}
+      \item{Eukaryotes use linear chromosomes and specialized end structures (telomeres).}
+    \end{itemize}
+    \end{answered}
+  \item{Describe the central structure of a nucleosome?}
+    \begin{answered}
+    The nucleosome core is a \textbf{histone \textit{octamer,}} composed of a H3-H4 tetramer and a pair of H2A-H2B dimers.
+    \end{answered}
+  \item{Approximately what fold compression does packing into nucleosomes provide for DNA packing?}
+    \begin{answered}
+    Wrapping around nucleosomes 
+    \end{answered}
+  \item{About how long is linker DNA?}
+    \begin{answered}
+    Linker DNA ranges from just a few base pairs to up to about eight base pairs, so the distance between nucleosomes is about $200$ bp.
+    \end{answered}
+  \item{Describe size and conservation of histones relative to other proteins.}
+    \begin{answered}
+    Histones are smaller and more conserved than most other proteins. They're only about $102-135$ amino acids, and differ by only a few amino acids, suggesting critical structural importance under intense stabilizing selection
+    \end{answered}
+  \item{What features do the histone proteins share?}
+    \begin{answered}
+    Histones share the \textit{histone \textbf{fold,}} a domain composed of three $\alpha$ helices connected by short loops
+    \end{answered}
+  \item{Account for the simultaneous strength and nonspecificity of affinity between DNA and the histone octamer. Why does virtually any sequence bind so strongly?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{Charge} and \textit{amino acid composition:} DNA is negatively charged, while about $1/5$ of the histone's amino acids are either \textit{lysine} or \textit{arginine.}}
+      \item{Basic amino acids are positively charged at neutral pH (because they donate hydroxide ions to solution), so they modest positive charge of the histone core attracts negatively charged DNA.}
+    \end{itemize}
+    \end{answered}
+  \item{Describe the extent of the interface between the histone octamer and the DNA that wraps around it.}
+    \begin{answered}
+    \begin{itemize}
+      \item{In just $147$ bp, or about one-and-a-half \say{wraps} around the octamer, DNA makes a whopping $142$ hydrogen bonds with the octamer.}
+      \item{Roughly half of the hydrogen bonds between DNA and the octamer are between the backbone and the histone core (not tails).}
+    \end{itemize}
+    \end{answered}
+  \item{Characterize the nucleosome's sequence binding preference.}
+    \begin{answered}
+    Certain dinucleotide pairs bend with relative ease; the DNA is more sharply bent on the nucleosome-adjacent side, so on that side, it's preferable to have A-T enrichment in the octamer-proximal minor groove.
+    \end{answered}
+  \item{Why must the sequence binding preference of nucleosomes be relatively weak?}
+    \begin{answered}
+    Nucleosomal sequence binding preference may be viewed as an assist with the chromatin architectural plan, but greater functional exigency must be given preference for nucleosome positioning and DNA access, so nucleosome preference must not overwhelm TFs' ability to reposition them.
+    \end{answered}
+\end{QandA}
+\section{DNA Replication}
+\begin{QandA}
+  \item{What's it mean that \textit{DNA replication is \textbf{semiconservative?}}}
+    \begin{answered}
+    \textit{\textbf{Semiconservative} replication} means that in each \say{daughter duplex} that's generated, one strand is newly synthesized, and one strand is inherited from the parent cell.
+    \end{answered}
+  \item{Which \textit{classic experiment} demonstrated that \textit{DNA replication is \textbf{semiconservative?}}}
+    \begin{answered}
+    The \textbf{Meselson-Stahl experiment} demonstrated the DNA replication is semiconservative.
+    \end{answered}
+\end{QandA}
+\section{Chromatin Histones Nucleosomes}
+\begin{QandA}
+  \item{If DNA so frequently \say{breathes} by unwrapping briefly from the nucleosome (about 4 times per second, with each exposure $10-50$ms), why do eukaryotic cells need ATP-dependent chromatin remodeling complexes at all?}
+    \begin{answered}
+    While contact between a TF and the DNA may be able to happen randomly in such frequent but brief windows, likelihood improves greatly with the remodeling factors, as they maintain accessibility much longer.
+    \end{answered}
+  \item{How do nucleosome remodeling complexes achieve \textit{nucleosome replacement?} What's the approximate average frequency of that turnover in cells?}
+    \begin{answered}
+    \begin{itemize}
+      \item{Remodeling complexes feature a \textit{\textbf{helicase-like} subunit} that uses \textbf{ATP hydrolysis} to achieve the \say{sliding} action.}
+      \item{Remodeling complexes associated/collaborate with \textit{histone \textbf{chaperone} proteins} that assist with histone substitution of histones within the octamer.}
+      \item{On average, each nucleosome is replaced once every $1-2$ hours, or around $15$ times each day.}
+    \end{itemize}
+    \end{answered}
+  \item{What's the most important factor for determining nucleosome position? Why is this functionally important?}
+    \begin{answered}
+    \begin{itemize}
+      \item{Binding of transcription factors and other proteins, much more than histone-to-sequence binding preference, influences nucleosome position}
+      \item{For functional plasticity and response to signaling / changing conditions, it's critical that DNA-binding proteins' influence outweighs the (static) preference of histones for certain DNA sequence features.}
+    \end{itemize}
+    \end{answered}
+  \item{Which histone has been less conserved through evolutionary history? How may this help explain interspecific chromatin structural differences?}
+    \begin{answered}
+    The \textbf{\say{linker} histone (H1)} has been much less conserved than the others. Since it plays a more prominent role in higher-order chromatin structure, that lack of conservation may help account for interspecific differences in chromatin packing.
+    \end{answered}
+  \item{How does linker histone H1 facilitate chromatin condensation into higher-order nucleosomal arrays?}
+    \begin{answered}
+    H1 \textit{alters DNA exit path} from the nucleosome, in a way making the emergent DNA slightly more tethered/less flexible.
+    \end{answered}
+  \item{It's said that \textit{heterochromatin is self-propagating.} What early experimental observation in flies supports this?}
+    \begin{answered}
+    \begin{itemize}
+      \item{The so-called \textit{position effect} from early fly genomics experiments supports the notion that heterochromatic state propagates}
+      \item{Euchromatin translocated into a heterochromatic neighborhood has its genes \textit{silenced}.}
+    \end{itemize}
+    \end{answered}
+  \item{\textbf{Histone PTMs and accessibility:} which general histone tail modification is associated with chromatin accessibility? How does it foster access?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{Lysine \textit{acetylation}} is strongly associated with chromatin accessibility, by \textit{charge neutralization.}}
+      \item{Specifically, the negative acetyl charge neutralizes the positive lysine charge, thereby weakening binding affinity between DNA and the the octamer.}
+    \end{itemize}
+    \end{answered}
+  \item{\textbf{Histone PTMs and chromatin:} Which histone PTM is strongly associated with condensed heterochromatin? How so?}
+    \begin{answered}
+    H3K9me3 is most associated with (esp. constitutive) heterochromatin. \textbf{Linker histone H1} is recruited by this PTM.
+    \end{answered}
+  \item{How do cells unevenly distribute histone protein synthesis? How does this relate to fulfillment of functional needs?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textit{Histone variants} (most) are synthesized continually \textit{throughout interphase.}}
+      \item{\textit{Canonical histones} are synthesized primarily during \textit{S phase.}}
+      \item{Histone variants, by nature, typically replace a canonical histone to shift probability distributions of events in some functional way; as such, they're needed throughout much of the cell cycle.}
+      \item{Synthesizing canonical histones primarily during S phase is both functionally efficient and tips the concentration of available histone protein for nucleosomes toward the canonical/constitutive rather than the specifically functionally facultative.}
+    \end{itemize}
+    \end{answered}
+  \item{Describe how nucleosome remodeling complexes attain functional two kinds of specificity.}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{\textit{Spatial} specificity:} nucleosome remodeling complexes target specific genomic regions / motifs by incorporating \textit{DNA-binding subunit(s).}}
+      \item{\textbf{\textit{Functional} specificity:} remodeling complexes favor binding to a particular histone variant through \textit{protein-protein interactions;} specifically, complexes include subunit(s) for interaction with chaperone(s) associated with particular histone(s).}
+    \end{itemize}
+    \end{answered}
+  \item{Broadly, what balance does a structure featuring a dense core but several looser, freer tails (histones) strike, and functionally what does this achieve?}
+    \begin{answered}
+    \begin{itemize}
+      \item{The balance/tradeoff is struck between density and close spatial packing, and dynamism.}
+      \item{Pairing a small, dense core with several short but flexible \say{tails} allows histones to both condense DNA into chromatin while leaving a \say{hook,} or \say{platform} for functional alteration as cellular needs change.}
+    \end{itemize}
+    \end{answered}
+  \item{\textbf{Histone PTM \textit{combinatorial specificity:}} How do nucleosome remodeling complexes and other \say{readers} of chromatin implement combinatorial specificity?}
+    \begin{answered}
+    Many/all individual PTMs have at least one \say{reader} motif/domain. Complexes or large proteins can achieve a sort of combinatorial mark specificity and stronger binding by \textit{incorporating several domains/modules} with \say{reading} properties.
+    \end{answered}
+  \item{\textbf{Chromatin \textit{spreading:}} what's the classic way in protein/enzymatic complexes \say{spread} chromatin marks?}
+    \begin{answered}
+    A complex that \textit{pairs reader with writer} is effective for \say{spreading} a particular mark. That is, a complex in which the writer leaves a mark that the reader binds.
+    \end{answered}
+\end{QandA}
+\section{connections between topics}
+\begin{QandA}
+  \item{\textit{\textbf{Immunology} and genome \textbf{integrity/maintenance:}} which process is used by both \textit{V(D)J recombination} and by \textit{DNA repair?}}
+    \begin{answered}
+    \textbf{NHEJ:} non-homologous end joining is used by both V(D)J recombination and by DNA repair.
+    \end{answered}
+  \item{\textit{\textbf{Meiosis} and genome \textbf{integrity/maintenance:}} which process is used by both \textit{meiosis} and by \textit{DNA repair?}}
+    \begin{answered}
+    \textit{Homologous recombination (\textbf{HR})} is used by both meiosis and by DNA repair.
+    \end{answered}
+  \item{How does the deployment of \textbf{HR} contextually differ?}
+    \begin{answered}
+    sister chromatids : DNA repair :: homologous chromosomes : meiosis
+    \end{answered}
+  \item{Motivate the difference in \textit{\textbf{HR} mechanics} that depends on usage context. That is, why do it each way in each context?}
+    \begin{answered}
+    \begin{itemize}
+      \item{For \textbf{DNA \textit{repair,}} a primary concern is \textit{loss of heterozygosity (\textbf{LOH,})} so a chromosome's sister chromatid is favored as the temlate.}
+      \item{For \textbf{meiotic \textit{recombination,}} a primary concern is \textit{generation of genetic \textbf{diversity,}} so the homologous chromosome is favored as recombination partner.}
+    \end{itemize}
+    \end{answered}
+\end{QandA}
+\section{math stat general}
+\begin{QandA}
+  \item{What's a good way to measure how quickly an object converges to 0 in some limit? That's is, what's a general strategy? Think \textbf{Blitzstein} and \textbf{Mark Low.}}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{\textit{Competition} between terms:} specifically, multiply by a \textit{sufficiently large power} of $n$ going to infinity.}
+      \item{More generally, allow a term going to infinity to \say{compete with} a term going to 0, until the nonzero term is sufficiently powerful for nondegenracy.}
+    \end{itemize}
+    \end{answered}
+  \item{How and under what conditions can we \textit{define a \textbf{natural ordering of matrices?}}}
+    \begin{answered}
+    \begin{itemize}
+      \item{A natural ordering for matrices occurs when they're all squares of a common size and are positive definite}
+      \item{The determinant (product of eigenvalues) then defines a natural ordering of the matrices.}
+    \end{itemize}
+    \end{answered}
+\end{QandA}
+\section{Virology2020 L07 Transcription and RNA processing}
+\begin{QandA}
+  \item{Which \textbf{molecule type} (of nucleic acid) is required for transcription?}
+    \begin{answered}
+    \textit{Transcription} is a process linked by definition to \textbf{dsDNA}; dsDNA to mRNA.
+    \end{answered}
+  \item{Which viral classes involve transcription at all?}
+    \begin{answered}
+    The classes that \textit{include \textbf{dsDNA}} as part of the lifecycle use transcription; Class I, II, VI, and VII.
+    \end{answered}
+  \item{Which viruses enter the cell \say{ready to go} w.r.t. transcription? That is, which viruses \textit{don't} need intermediate(s)?}
+    \begin{answered}
+    \textbf{Class I, dsDNA}: The dsDNA viruses enter the cell ready for transcription, since their genome is the molecular input for transcription.
+    \end{answered}
+  \item{Which viruses are even more \say{ready-to-go} from the protein production perspective than the \say{ready-to-go} dsDNA viruses? That is, which viruse \say{skip} straight to translation?}
+    \begin{answered}
+    \textbf{Class IV, sense-strand RNA} viruses enter the cell even more \say{ready} for protein production, as they have the property that \textit{gRNA = mRNA}.
+    \end{answered}
+  \item{What are the 2 main types of viral \textbf{transcription regulatory frameworks}? Describe each.}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{\textit{Cascade} regulation}: Genes may have a \textit{serial} expression structure, in space and/or in time. One or more \say{upstream} gene products activates/licenses a \say{downstream} gene.}
+      \item{\textbf{\textit{Feedback} regulation}: One gene may \textit{\textbf{auto}regulate}; this could be negative or positive; more about \textit{how much} than abotu ON/OFF.}
+    \end{itemize}
+    \end{answered}
+  \item{What are some examples of \textbf{modular organization} (in \textit{function} and in \textit{sequence} of sequence-specific transcriptional activators?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{DNA binding}: most N-terminal region of the protein; often a \textit{zinc finger}, a \textit{helix-turn-helix} motif, or an especially \textit{basic (ph)} region}
+      \item{\textbf{Dimer formation}: often implemented via \textit{leucine zipper}}
+      \item{\textbf{NLS}: nuclear localization sequence, used to direct a transcription factor back to the nucleus to do its job}
+      \item{\textbf{Activation}: most C-terminal region; often a \textit{acidic} or rich in glutamine, proline, or isoleucine}
+    \end{itemize}
+    \end{answered}
+  \item{What are 3 common \textbf{\textit{molecular} implementations} of the \textbf{DNA binding} portion of a transcriptional activator?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textit{Zinc finger}: }
+      \item{\textit{Helix-turn-helix}: a particular structural motif}
+      \item{\textit{Basic}: a region enriched for basic amino acids}
+    \end{itemize}
+    \end{answered}
+  \item{What's the primary purpose of early vs. late phases? That is, why have phases?}
+    \begin{answered}
+    Partitioning the life cycle compartmentalizes gene expression according to life cycle timing, avoids the otherwise wasteful output, and economizing the life cycle.
+    \end{answered}
+  \item{What kind/class of protein is particularly common in the early phase?}
+    \begin{answered}
+    Transcriptional activators and regulatory proteins are especially likely to be in the early phase.
+    \end{answered}
+  \item{What kind of proteins are especially associated with the late phase? Why?}
+    \begin{answered}
+    Structural proteins are typically late-phase, since they're only needed for particle assembly when it's time to infect other cells.
+    \end{answered}
+  \item{What viral life cycle process is especially associated with coupling to the activation of late-phase transcription?}
+    \begin{answered}
+    A common viral strategy is to couple late-phase transcription to genome replication, as replication signals that it's about time to form new particles and infect other cells.
+    \end{answered}
+\end{QandA}
+\end{document}
