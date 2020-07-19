@@ -179,6 +179,17 @@
     A transverse plane divides anterior from posterior.
     \end{answered}
 \end{QandA}
+\section{Bioinformatics File Formats}
+\begin{QandA}
+  \item{Descibe the BED coordinate system.}
+    \begin{answered}
+    BED uses 0-based inclusive starts and exclusive ends, so a half-open interval; the first nucleotide has 0 start and 1 end.
+    \end{answered}
+  \item{What justifies the (perhaps quirky) BED coordinate system choice?}
+    \begin{answered}
+    Computation time justifies BED coordinates; specifically, length of a region/feature becomes simple subtraction of start from end.
+    \end{answered}
+\end{QandA}
 \section{Analytical Methods}
 \begin{QandA}
   \item{In which kind of graph/plot does a \textbf{power law} reveal itself as a \textbf{linear} relationship? Why?}
@@ -787,6 +798,46 @@
   \item{Which viruses are even more \say{ready-to-go} from the protein production perspective than the \say{ready-to-go} dsDNA viruses? That is, which viruse \say{skip} straight to translation?}
     \begin{answered}
     \textbf{Class IV, sense-strand RNA} viruses enter the cell even more \say{ready} for protein production, as they have the property that \textit{gRNA = mRNA}.
+    \end{answered}
+  \item{What are the 2 main types of viral \textbf{transcription regulatory frameworks}? Describe each.}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{\textit{Cascade} regulation}: Genes may have a \textit{serial} expression structure, in space and/or in time. One or more \say{upstream} gene products activates/licenses a \say{downstream} gene.}
+      \item{\textbf{\textit{Feedback} regulation}: One gene may \textit{\textbf{auto}regulate}; this could be negative or positive; more about \textit{how much} than abotu ON/OFF.}
+    \end{itemize}
+    \end{answered}
+  \item{What are some examples of \textbf{modular organization} (in \textit{function} and in \textit{sequence} of sequence-specific transcriptional activators?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{DNA binding}: most N-terminal region of the protein; often a \textit{zinc finger}, a \textit{helix-turn-helix} motif, or an especially \textit{basic (ph)} region}
+      \item{\textbf{Dimer formation}: often implemented via \textit{leucine zipper}}
+      \item{\textbf{NLS}: nuclear localization sequence, used to direct a transcription factor back to the nucleus to do its job}
+      \item{\textbf{Activation}: most C-terminal region; often a \textit{acidic} or rich in glutamine, proline, or isoleucine}
+    \end{itemize}
+    \end{answered}
+  \item{What are 3 common \textbf{\textit{molecular} implementations} of the \textbf{DNA binding} portion of a transcriptional activator?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textit{Zinc finger}: }
+      \item{\textit{Helix-turn-helix}: a particular structural motif}
+      \item{\textit{Basic}: a region enriched for basic amino acids}
+    \end{itemize}
+    \end{answered}
+  \item{What's the primary purpose of early vs. late phases? That is, why have phases?}
+    \begin{answered}
+    Partitioning the life cycle compartmentalizes gene expression according to life cycle timing, avoids the otherwise wasteful output, and economizing the life cycle.
+    \end{answered}
+  \item{What kind/class of protein is particularly common in the early phase?}
+    \begin{answered}
+    Transcriptional activators and regulatory proteins are especially likely to be in the early phase.
+    \end{answered}
+  \item{What kind of proteins are especially associated with the late phase? Why?}
+    \begin{answered}
+    Structural proteins are typically late-phase, since they're only needed for particle assembly when it's time to infect other cells.
+    \end{answered}
+  \item{What viral life cycle process is especially associated with coupling to the activation of late-phase transcription?}
+    \begin{answered}
+    A common viral strategy is to couple late-phase transcription to genome replication, as replication signals that it's about time to form new particles and infect other cells.
     \end{answered}
 \end{QandA}
 \end{document}
