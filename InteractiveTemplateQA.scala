@@ -2,6 +2,7 @@ object InteractiveTemplateQA {
 
   interp.load.ivy("org.typelevel" %% "cats-core" % "2.1.1")
   import java.io.{ BufferedWriter, File, FileWriter }
+  import java.nio.file.{ Paths }
   import cats.Monoid
   val circeVersion = "0.13.0"
   Seq("circe-core") foreach { circePkg => interp.load.ivy("io.circe" %% circePkg % circeVersion) }
@@ -23,6 +24,15 @@ object InteractiveTemplateQA {
         try { w.write(qas.asJson.spaces2); w.newLine() } finally { w.close() }
       }
     }
+  }
+
+  def stubQAInCode(repo: String, subject: String)(numSingleAns: Int, numListAns: Int): Unit = {
+    val filext = ".QandA.json"
+    val outfolder = new File(Paths.get(System.getenv("CODE"), repo).toString)
+    if (!outfolder.isDirectory) throw new Exception(s"Output folder path isn't a directory: $outfolder")
+    val outfile = new File(outfolder, s"${subject}${filext}")
+    println(s"Writing: $outfile")
+    stubQAFile(numSingleAns, numListAns)(outfile)
   }
 
   val testFile = new File("/home/vr/test-QA-template.json")
