@@ -29,6 +29,7 @@ object InteractiveTesting {
     "\\usepackage{amsmath, amssymb}", 
     "\\usepackage{dirtytalk}", 
     "\\usepackage{enumitem}", 
+    "\\usepackage{hyperref}    % Links in TOC", 
     "\\usepackage[a4paper,bindingoffset=0.2in,%", 
     "             left=0.75in,right=0.75in,top=0.75in,bottom=0.75in,%", 
     "             footskip=.25in]{geometry}", 
@@ -43,6 +44,8 @@ object InteractiveTesting {
     "\\begin{document}", 
     "", 
     "\\maketitle", 
+    "", 
+    "\\tableofcontents",
     ""
   ) mkString "\n"
   
@@ -93,7 +96,7 @@ object InteractiveTesting {
     secFileGroupTrios.toNel match {
       case None => (Option.empty[File], List.empty[File], errFilePairs)
       case Some(trios) => {
-        val preamble = standardPreamble("All Questions", "Vince Reuter", "Last updated Monday, July 20, 2020")
+        val preamble = standardPreamble("All Questions", "Vince Reuter", "Last updated Thursday, July 23, 2020")
         val (files, groups) = trios.toList.foldRight(
           List.empty[File] -> List.empty[(String, NEL[TexQA])]){ 
             case ((n, f, qas), (fs, gs)) => (f :: fs, (n, qas) :: gs) }
