@@ -76,11 +76,17 @@ object InteractiveTesting {
       "AlbertsMolbio", 
       "biochemistry", 
       "MathStat", 
-      "Virology-VRR-2020", 
-      "popgen"
+      "Virology-Learning", 
+      "popgen", 
+      "paper_notes", 
+      "Immunology"
     )
     val folders = qaRootFolderNames map { foldName => 
       new File(Paths.get(System.getenv("CODE"), foldName).toString) }
+    folders.filterNot(_.isDirectory).toNel.fold(()){ missing => {
+      val msg = s"Missing ${missing.length} folders: ${missing.toList mkString ", "}"
+      throw new Exception(msg)
+    } }
     val filtPred: File => Boolean = exclude.getOrElse((_: File) => false)
     val sectFpairs = (folders flatMap { DataSeek.seekData(
       _: File, NEL(".QandA.json", List()), file2Name) }).filterNot(sf => filtPred(sf._2))
@@ -96,7 +102,7 @@ object InteractiveTesting {
     secFileGroupTrios.toNel match {
       case None => (Option.empty[File], List.empty[File], errFilePairs)
       case Some(trios) => {
-        val preamble = standardPreamble("All Questions", "Vince Reuter", "Last updated Thursday, July 23, 2020")
+        val preamble = standardPreamble("All Questions", "Vince Reuter", "Last updated Sunday, July 26, 2020")
         val (files, groups) = trios.toList.foldRight(
           List.empty[File] -> List.empty[(String, NEL[TexQA])]){ 
             case ((n, f, qas), (fs, gs)) => (f :: fs, (n, qas) :: gs) }
