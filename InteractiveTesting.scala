@@ -88,8 +88,8 @@ object InteractiveTesting {
       throw new Exception(msg)
     } }
     val filtPred: File => Boolean = exclude.getOrElse((_: File) => false)
-    val sectFpairs = (folders flatMap { DataSeek.seekData(
-      _: File, NEL(".QandA.json", List()), file2Name) }).filterNot(sf => filtPred(sf._2))
+    val sectFpairs: List[(String, File)] = ( folders flatMap { 
+      DataSeek.seekData(_: File, NEL(".QandA.json", List()), file2Name) } ).filterNot(sf => filtPred(sf._2))
     val (errFilePairs, secFileGroupTrios) = Alternative[List].separate(
       sectFpairs map { case (sect, f) =>  Parsing.readFile(f) match {
         case Left(e) => Left[(File, String), (String, File, NEL[TexQA])](f -> e.getMessage)
