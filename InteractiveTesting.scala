@@ -102,7 +102,7 @@ object InteractiveTesting {
     secFileGroupTrios.toNel match {
       case None => (Option.empty[File], List.empty[File], errFilePairs)
       case Some(trios) => {
-        val preamble = standardPreamble("All Questions", "Vince Reuter", "Last updated Sunday, July 26, 2020")
+        val preamble = standardPreamble("All Questions", "Vince Reuter", "Last updated Monday, July 27, 2020")
         val (files, groups) = trios.toList.foldRight(
           List.empty[File] -> List.empty[(String, NEL[TexQA])]){ 
             case ((n, f, qas), (fs, gs)) => (f :: fs, (n, qas) :: gs) }
@@ -123,5 +123,6 @@ object InteractiveTesting {
     writeAllQA(outfile, Some(isMbgeneTelomeresFile) )
   }
   maybeTestF.fold(println("No TeX source to make")){ f => println(Writing.pdftex(f, Relpath("target"))) }
+  println(s"Processed ${processedInfiles.size} files: ${processedInfiles.map(_.getPath).mkString("\n")}")
 
 }
