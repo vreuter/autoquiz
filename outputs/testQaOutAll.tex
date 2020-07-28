@@ -12,7 +12,7 @@
 
 \title{All Questions}
 \author{Vince Reuter}
-\date{Last updated Monday, July 27, 2020}
+\date{Last updated Tuesday, July 28, 2020}
 
 \begin{document}
 
@@ -1168,6 +1168,55 @@
       \item{More self-peptide presentation by a MHC, then, tends to yield a cognate TCR pool enriched for weaker interactions.}
       \item{To still be positively selected despite individual residue's relative weak interaction with peptide, the TCRs for a broadly-self-presenting MHC tend to rely on more individual contacts with the peptide.}
       \item{Reliance by the TCR on more individual contacts with peptide means a given AA substitution in the peptide is more likely to ruin the recognition by the T cell.}
+    \end{itemize}
+    \end{answered}
+\end{QandA}
+\section{Influenza Nature 2019 MHC classII receptor for novel bat IAV}
+\begin{QandA}
+  \item{What's flu's surface protein that it uses for entry? What's the usual receptor? What's the receptor for these two new bat IAVs (H17N10 and H18N11)?}
+    \begin{answered}
+    \begin{itemize}
+      \item{Flu uses the \textit{hemagluttinin (HA)} protein to bind to a cell surface molecule.}
+      \item{Normally, flu uses \textit{sialic acid,} an acidic sugar on cell surfaces, as its receptor; there's a connection between flu strain, host species, and sialic acid linkage preference (i.e., which bonds in the sialic acid the hemagglutinin prefers to bind).}
+      \item{For these bat viruses, the receptor is not a sugar (like sialic acid), but rather a protein (MHC class II).}
+    \end{itemize}
+    \end{answered}
+  \item{What's a a particularly striking difference between flu's typical receptor and the receptor for these bat viruses?}
+    \begin{answered}
+    Flu's normal receptor is an acidic sugar, but in these bat viruses it was thought previously, and shown here, to be a protein.
+    \end{answered}
+  \item{Which two methods were used to screen \textit{broadly} for candidate genes}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textit{Differential expression} contrasted gene expression from three cell cell lines susceptible to bat IAV with gene expression from three cell lines not susceptible to the virus, looking for genes up in all three susceptible cell lines relative to the non-susceptible lines. Candidates were filtered based on Gene Ontology search for plasma membrane association/function.}
+      \item{\textit{Genome-wide CRISPR screening} was used transfecting \textit{Cas9}-expressing cells with lentiviral vectors carrying a bunch of guide RNAs, and then cells were selected for resistance to infection by VSV-H18 (VSV expressing one of the bat flu hemagluttinins). Then analysis showed which guide RNAs were in those cells (so which genes were knocked down).}
+    \end{itemize}
+    \end{answered}
+  \item{What method was used to \textit{hone in on the target} gene(s)?}
+    \begin{answered}
+    With the genes up in all three susceptible cell lines (relative to non-susceptible) in hand, the investigators used \textbf{RNAi} (specifically, with \textbf{siRNA}) directed against the target genes.
+    \end{answered}
+  \item{In what main ways was it demonstrated definitively that MHC class II is the receptor for these new bat flu viruses?}
+    \begin{answered}
+    \begin{itemize}
+      \item{Genetic knockout of MHC class II is protective against entry of H18 VLPs (controlled by H1N1 VLPs still showing ability to enter).}
+      \item{siRNA knockdown (maybe) of MHC class II impedes H18 VLP entry.}
+      \item{MHC class II expression from lentiviral vectors restores susceptibility to entry by H18 VLPs.}
+    \end{itemize}
+    \end{answered}
+  \item{In what main ways was cell the link between the receptor both strengthened and generalized?}
+    \begin{answered}
+    \begin{itemize}
+      \item{Many different species HLA-DR molecules confer susceptibility on HEK293 cells (express both chains for that MHC molecule) in the HEK293 cells and infect with VSV or VLPs with the bat flu hemagluttinins H18.}
+      \item{Different MHC alleles also confer susceptibility (e.g., HLA-DRQ and HLA-DRP).}
+    \end{itemize}
+    \end{answered}
+  \item{\textbf{Cross-species transmissibility}: What were the main findings about susceptibility in \textit{mice} to the actual bat viruses?}
+    \begin{answered}
+    \begin{itemize}
+      \item{It appears that \textit{mice} are indeed susceptibile, but virus replication is \textit{confined to the \textbf{upper respiratory tract}}, and really only to a region of the \textbf{epithelium}.}
+      \item{MHC class II deficiency is protective in mice.}
+      \item{The link between MHC class II and susceptibility is strengthened by ablating MHC class II specifically on endothelial cells in the upper respiratory tract (basically the only replicatibe location) and demonstrating lack of plaque formation (i.e., no antigen-presenting cells still have MHC class II, but virus doesn't replicate).}
     \end{itemize}
     \end{answered}
 \end{QandA}
