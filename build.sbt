@@ -30,10 +30,10 @@ scalacOptions ++= Seq("-deprecation", "-feature", "-language:higherKinds")//, "-
 
 /* Testing tools, or at least only used in tests */
 resolvers += "Artima Maven Repository" at "https://repo.artima.com/releases"
-libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.14.0" % "test"
-libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.8" % "test"
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.8" % "test"
-//libraryDependencies += "org.scalamock" %% "scalamock" % "4.1.0" % "test"
+libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.14.3" % "test"
+libraryDependencies += "org.scalactic" %% "scalactic" % "3.1.2" % "test"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.2" % "test"
+libraryDependencies += "org.typelevel" %% "discipline-scalatest" % "1.0.1"
 
 /* ScalaTest options */
 testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest, "-oS")    // o for stdout, S for "short" stack trace; "F" for full
