@@ -31,7 +31,7 @@ trait RenderQA {
       def aText(nIdentStep: Int): String => String = s => s"${Seq.fill(nLeftPad * nIdentStep)(" ") mkString ""}$s"
       val step2Text = aText(2)
       val init = qas.toList flatMap { qa => {
-        val aList = qa.a match {
+        val aList = qa.a.toList match {
           case Nil => throw new Exception(s"No answer for question in section $sectHead: ${qa.q}")
           case a :: Nil => List(aText(2)(a))
           case as => {
