@@ -63,10 +63,17 @@ object TexQA {
   
   /** Parse JSON into a {@code TeX}-friendly Q-and-A instance. */
   implicit val qaDecoder: Decoder[TexQA] = new Decoder[TexQA] {
+    import cats.syntax.either._
     import ValidAsAnswer._
     def apply(c: HCursor): Decoder.Result[TexQA] = for {
       q <- c.get[String]("Q")
-      a <- c.get[ValidAsAnswer]("A")
+      a <- c.get[ValidAsAnswer]("A").leftMap(fail => {
+        val msg = c.keys match {
+          case None => "No keys"
+          case Some(ks) => ks.map(k => s"'$k'") mkString ", "
+        }
+        fail.copy(message = msg)
+      })
       tags <- c.get[Option[List[String]]]("tags")
       refs <- c.get[Option[List[String]]]("refs")
       qa = TexQA(q, a, tags getOrElse List.empty[String], refs getOrElse List.empty[String])
