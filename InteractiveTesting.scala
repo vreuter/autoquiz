@@ -49,7 +49,7 @@ object InteractiveTesting {
     ""
   ) mkString "\n"
   
-  val libVersion = "0.1.0"
+  val libVersion = "0.1.1-SNAPSHOT"
   val libname = "autoquiz"
   val codePath: File = findCodeUnsafe()
   val repoPath: File = new File(codePath, libname)
@@ -132,8 +132,6 @@ object InteractiveTesting {
 
   /* Separate testing */
   val tempTestFile = new File(Paths.get(System.getenv("HOME"), "temp-test-file.json").toString)
-  val tempTestFile = new File(Paths.get(System.getenv("HOME"), "temp-test-file-2.json").toString)
-  val tempTestFile = new File(Paths.get(System.getenv("HOME"), "temp-test-file-3.json").toString)
   require(tempTestFile.isFile, s"Not a file: ${tempTestFile}")
   val tempParseResult = Parsing.readFile(tempTestFile)
 
