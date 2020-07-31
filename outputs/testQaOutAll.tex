@@ -12,7 +12,7 @@
 
 \title{All Questions}
 \author{Vince Reuter}
-\date{Last updated Tuesday, July 28, 2020}
+\date{Last updated Thursday, July 30, 2020}
 
 \begin{document}
 
@@ -574,6 +574,21 @@
     \end{itemize}
     \end{answered}
 \end{QandA}
+\section{DNA repair HR}
+\begin{QandA}
+  \item{What's a major risk of mitotic HR that must be avoided? What danger does it typically pose? Molecularly, how is the solution strategy implemented?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textit{Loss of heterozygosity (\textbf{LOH})} is a major risk that a mitotic cell must avoid. That's when homologous recombination randomly selects the alternate allele rather than the sister chromatid for recombination.}
+      \item{Having 2 copies of each gene safeguards against a defective copy. Losing one copy increases the likelihood of no working copy, which is especially risky for cancer.}
+      \item{\textit{\textbf{Cohesin} wraps sister chromatids,} keeping them quite close together. The spatial proximity of sister chromatids relative to homologous chromosomes favors usage of the sister chromatid template.}
+    \end{itemize}
+    \end{answered}
+  \item{If \textit{\textbf{HR} requires a close match} between template and strand to repair, how can \textbf{LOH} occur?}
+    \begin{answered}
+    Because so much DNA is conserved between individuals, at a small scale with high probability \textit{maternal and paternal alleles will closely match.} The match may be close enough to satisfy HR.
+    \end{answered}
+\end{QandA}
 \section{classic experiments}
 \begin{QandA}
   \item{\textbf{\textit{Transforming} principle:} which classical experiment demonstrated that DNA is the \say{transforming principle?} That is, that it's the kind of molecule that transformed bacteria from benign to virulent/pathogenic.}
@@ -632,19 +647,26 @@
     DNA contains much more phosphorus than protein, while DNA contains no sulfur (but some amino acids and therefore protein do, plus disulfide bridges). Therefore, labeling phosphorus and sulfur distinguishes protein from DNA.
     \end{answered}
 \end{QandA}
-\section{DNA repair HR}
+\section{connections between topics}
 \begin{QandA}
-  \item{What's a major risk of mitotic HR that must be avoided? What danger does it typically pose? Molecularly, how is the solution strategy implemented?}
+  \item{\textit{\textbf{Immunology} and genome \textbf{integrity/maintenance:}} which process is used by both \textit{V(D)J recombination} and by \textit{DNA repair?}}
+    \begin{answered}
+    \textbf{NHEJ:} non-homologous end joining is used by both V(D)J recombination and by DNA repair.
+    \end{answered}
+  \item{\textit{\textbf{Meiosis} and genome \textbf{integrity/maintenance:}} which process is used by both \textit{meiosis} and by \textit{DNA repair?}}
+    \begin{answered}
+    \textit{Homologous recombination (\textbf{HR})} is used by both meiosis and by DNA repair.
+    \end{answered}
+  \item{How does the deployment of \textbf{HR} contextually differ?}
+    \begin{answered}
+    sister chromatids : DNA repair :: homologous chromosomes : meiosis
+    \end{answered}
+  \item{Motivate the difference in \textit{\textbf{HR} mechanics} that depends on usage context. That is, why do it each way in each context?}
     \begin{answered}
     \begin{itemize}
-      \item{\textit{Loss of heterozygosity (\textbf{LOH})} is a major risk that a mitotic cell must avoid. That's when homologous recombination randomly selects the alternate allele rather than the sister chromatid for recombination.}
-      \item{Having 2 copies of each gene safeguards against a defective copy. Losing one copy increases the likelihood of no working copy, which is especially risky for cancer.}
-      \item{\textit{\textbf{Cohesin} wraps sister chromatids,} keeping them quite close together. The spatial proximity of sister chromatids relative to homologous chromosomes favors usage of the sister chromatid template.}
+      \item{For \textbf{DNA \textit{repair,}} a primary concern is \textit{loss of heterozygosity (\textbf{LOH,})} so a chromosome's sister chromatid is favored as the template.}
+      \item{For \textbf{meiotic \textit{recombination,}} a primary concern is \textit{generation of genetic \textbf{diversity,}} so the homologous chromosome is favored as recombination partner.}
     \end{itemize}
-    \end{answered}
-  \item{If \textit{\textbf{HR} requires a close match} between template and strand to repair, how can \textbf{LOH} occur?}
-    \begin{answered}
-    Because so much DNA is conserved between individuals, at a small scale with high probability \textit{maternal and paternal alleles will closely match.} The match may be close enough to satisfy HR.
     \end{answered}
 \end{QandA}
 \section{DNA Structure}
@@ -862,28 +884,6 @@
     A complex that \textit{pairs reader with writer} is effective for \say{spreading} a particular mark. That is, a complex in which the writer leaves a mark that the reader binds.
     \end{answered}
 \end{QandA}
-\section{connections between topics}
-\begin{QandA}
-  \item{\textit{\textbf{Immunology} and genome \textbf{integrity/maintenance:}} which process is used by both \textit{V(D)J recombination} and by \textit{DNA repair?}}
-    \begin{answered}
-    \textbf{NHEJ:} non-homologous end joining is used by both V(D)J recombination and by DNA repair.
-    \end{answered}
-  \item{\textit{\textbf{Meiosis} and genome \textbf{integrity/maintenance:}} which process is used by both \textit{meiosis} and by \textit{DNA repair?}}
-    \begin{answered}
-    \textit{Homologous recombination (\textbf{HR})} is used by both meiosis and by DNA repair.
-    \end{answered}
-  \item{How does the deployment of \textbf{HR} contextually differ?}
-    \begin{answered}
-    sister chromatids : DNA repair :: homologous chromosomes : meiosis
-    \end{answered}
-  \item{Motivate the difference in \textit{\textbf{HR} mechanics} that depends on usage context. That is, why do it each way in each context?}
-    \begin{answered}
-    \begin{itemize}
-      \item{For \textbf{DNA \textit{repair,}} a primary concern is \textit{loss of heterozygosity (\textbf{LOH,})} so a chromosome's sister chromatid is favored as the temlate.}
-      \item{For \textbf{meiotic \textit{recombination,}} a primary concern is \textit{generation of genetic \textbf{diversity,}} so the homologous chromosome is favored as recombination partner.}
-    \end{itemize}
-    \end{answered}
-\end{QandA}
 \section{math stat general}
 \begin{QandA}
   \item{What's a good way to measure how quickly an object converges to 0 in some limit? That's is, what's a general strategy? Think \textbf{Blitzstein} and \textbf{Mark Low.}}
@@ -1027,6 +1027,86 @@
   \item{How are \textbf{\textit{circular} RNA} molecules generated (by what molecular process)?}
     \begin{answered}
     \textit{Backsplicing} generates circular RNA molecules, by joining the 3' end of a downstream exon to the 5' end of an upstream exon.
+    \end{answered}
+\end{QandA}
+\section{TWiV96 Making Viral DNA}
+\begin{QandA}
+  \item{\textbf{Main steps}: What are the 4 main steps of viral DNA replication?}
+    \begin{answered}
+    \begin{itemize}
+      \item{1. \textit{Recognition}: DNA replication is \textit{spatially nonrandom}; that is, it begins at one or more defined places within the virus genome.}
+      \item{2. \textit{Initiation}: (almost) all DNA synthesis requires a \textit{primer}, and the mechanics/logistics of initiation vary largely w.r.t. what priming strategy a virus uses.}
+      \item{3. \textit{Elongation}: Once replication has been initiated, polymerase(s) elongate(s) DNA; in the case of a replication fork, there's typically quite different enzymatic machinery for each of the strands (leading and lagging)., }
+      \item{4. \textit{Termination}: Typically (?) by simply running out of template, replication eventually ceases.}
+    \end{itemize}
+    \end{answered}
+  \item{\textbf{Priming}: What are the 3 main strategies for \textit{priming} DNA synthesis? How does this fundamentally differ from RNA viruses?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textit{\textbf{RNA} priming}: Some(Specialized \textit{DNA-dependendent RNA polymerases} called \textbf{primases} can synthesize a short RNA oligomer complementary to a DNA template, providing the essential free 3'-OH for DNA polymerase to prime off of.)}
+      \item{\textit{\textbf{DNA} priming}: Some(Some viruses build the free 3'-OH for DNA polymerase right into their genome.)}
+      \item{\textit{\textbf{Protein} priming}: Some(Some viruses have a DNA-binding protein that coordinates with DNA polymerase and possible other proteins to ignite DNA synthesis.)}
+      \item{RNA synthesis often doesn't required a primer, so this is a less essential aspect of consideration for RNA viral study.}
+    \end{itemize}
+    \end{answered}
+  \item{Provide an example of each of the three main priming strategies.}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textit{\textbf{RNA} priming}: Some(Eukaryotic, linear chromosomes use RNA priming (\textbf{primase}, a specialize type of \textit{DNA-dependent RNA polymerase}, or DdRp))}
+      \item{\textit{\textbf{DNA} priming}: Some(\textit{Parvoviridae} members like AAV have an exposed 3'-OH at the tail of each inverted terminal repeat (ITR) hairpin end, so the primer's built right into the genome.)}
+      \item{\textit{\textbf{Protein} priming}: Some(\textit{Adenovirus} uses protein priming, with \textbf{preterminal protein (pTP)} working in conjunction with polymerase.)}
+    \end{itemize}
+    \end{answered}
+  \item{\textbf{\textit{Elongation} examples}: Provide example viruses for each of the two main elongation stratgies.}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textbf{Replication fork}: Some(SV40)}
+      \item{\textbf{Strand displacement}: Some(\textit{Parvoviridae} and \textit{Adenoviridae})}
+    \end{itemize}
+    \end{answered}
+  \item{\textit{Alternative \textit{elongation} strategy}: What's a major alternative strategy used for elongation during RNA replication, in a way \textit{combining the two major strategies}?}
+    \begin{answered}
+    \say{Rolling circle} replication is a strategy used by many viruses for DNA genome replication.
+    \end{answered}
+  \item{\textbf{\textit{Rolling circle} replication}: provide an example of a virus/es that use \textit{rolling circle} replication.}
+    \begin{answered}
+    \begin{itemize}
+      \item{Human herpesvirus 6 (HHV-6)}
+      \item{Human papillomavirus-16 (HPV-16)}
+    \end{itemize}
+    \end{answered}
+  \item{\textbf{Universal truths}: What are several things about viral DNA replication that always (or nearly always) hold true?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textit{Priming}: DNA synthesis (nearly) always requires a primer.}
+      \item{\textit{Directionality}: DNA synthesis always occurs in the 5'-to-3' direction, reading the template 3'-to-5'.}
+      \item{\textit{At least one protein}: All viruses need the host to make at least one protein for them. The virus can encode a DNA polymerase, and if it doesn't it needs a protein to \say{orchestrate the host} to get viral DNA made rather than the excess of host DNA.}
+    \end{itemize}
+    \end{answered}
+  \item{\textbf{Fundamental problem}: What fundamental problem arises for \textit{linear DNA} genome replication? Why for \textit{DNA}?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textit{The 5' end problem} refers to the difficulty of copying the DNA at the 5'-most end of the template.}
+      \item{The 5' end problem arises specifically in \textit{DNA} viruses because of the \textit{priming requirement}. RNA viruses don't in general face the same challenge.}
+    \end{itemize}
+    \end{answered}
+  \item{For humans (and mostly all other linear genome eukaryotes?) what's the solution to the 5' end problem?}
+    \begin{answered}
+    Telomeres solve the 5' end problem by signaling the end of chromosomes, with the support of specific sequence maintenance and DNA-binding enzymes and other proteins.
+    \end{answered}
+  \item{\textbf{Bare (protein) necessities}: what kinds of proteins provide the minimal activities needed for viral DNA genome replication?}
+    \begin{answered}
+    \begin{itemize}
+      \item{\textit{Recognition}: the virus needs at least one protein to recognize its ori(s), so \textbf{origin-binding protein(s)}.}
+      \item{\textit{Unwinding}: the virus needs \textbf{helicase(s)} to unwind the DNA.}
+      \item{\textit{Elongation}: the virus needs \textbf{DNA polymerase(s)} for the main work of DNA synthesis.}
+      \item{\textit{Chew back}: The virus also needs \textbf{exonucleases} to chew back DNA.}
+      \item{\textit{Metabolism}: The virus depends on various \textbf{nucleic acid metabolic enzymes}.}
+    \end{itemize}
+    \end{answered}
+  \item{What's the general relationship between genome size and independence from, vs. reliance on, the host cell?}
+    \begin{answered}
+    In general, \textit{smaller viruses \say{orchestrate}} while \textit{larger viruses \say{encode}}; that is, a smaller genome encodes protein(s) that manipulate host machinery while a larger genome encodes machinery specifically for the virus.
     \end{answered}
 \end{QandA}
 \section{Molecular Popgen}
