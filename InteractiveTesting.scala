@@ -49,7 +49,7 @@ object InteractiveTesting {
     ""
   ) mkString "\n"
   
-  val libVersion = "0.1.1-SNAPSHOT"
+  val libVersion = "0.1.1"
   val libname = "autoquiz"
   val codePath: File = findCodeUnsafe()
   val repoPath: File = new File(codePath, libname)
