@@ -63,7 +63,7 @@ object InteractiveTesting {
     (q: String) => s"\\item{$q}", "QandA", "\\begin{answered}", "\\end{answered}")
   
   def writeAllQA(outfile: File, 
-  exclude: Option[File => Boolean] = None): (Option[File], List[File], List[(File, String)]) = {
+    exclude: Option[File => Boolean] = None): (Option[File], List[File], List[(File, String)]) = {
     import cats.Alternative, cats.instances.either._, cats.instances.list._
     def file2Name(f: File): String = {
       val nDot = f.getName.count(_ == '.')
@@ -102,7 +102,7 @@ object InteractiveTesting {
     secFileGroupTrios.toNel match {
       case None => (Option.empty[File], List.empty[File], errFilePairs)
       case Some(trios) => {
-        val preamble = standardPreamble("All Questions", "Vince Reuter", "Last updated Tuesday, July 28, 2020")
+        val preamble = standardPreamble("All Questions", "Vince Reuter", "Last updated Friday, July 31, 2020")
         val (files, groups) = trios.toList.foldRight(
           List.empty[File] -> List.empty[(String, NEL[TexQA])]){ 
             case ((n, f, qas), (fs, gs)) => (f :: fs, (n, qas) :: gs) }
@@ -124,5 +124,19 @@ object InteractiveTesting {
   }
   maybeTestF.fold(println("No TeX source to make")){ f => println(Writing.pdftex(f, Relpath("target"))) }
   println(s"Processed ${processedInfiles.size} files: ${processedInfiles.map(_.getPath).mkString("\n")}")
+
+
+
+
+
+
+  /* Separate testing */
+  val tempTestFile = new File(Paths.get(System.getenv("HOME"), "temp-test-file.json").toString)
+  val tempTestFile = new File(Paths.get(System.getenv("HOME"), "temp-test-file-2.json").toString)
+  val tempTestFile = new File(Paths.get(System.getenv("HOME"), "temp-test-file-3.json").toString)
+  require(tempTestFile.isFile, s"Not a file: ${tempTestFile}")
+  val tempParseResult = Parsing.readFile(tempTestFile)
+
+
 
 }
