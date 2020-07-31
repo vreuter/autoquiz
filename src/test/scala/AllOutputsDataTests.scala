@@ -1,6 +1,6 @@
 package autoquiz
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
 /**
  * Leverage question-and-answer instances at select locations on the local filesystem for testing
@@ -10,7 +10,7 @@ import org.scalatest.FunSuite
  *
  * @author Vince Reuter
  */
-class AllOutputsDataTests {
+class AllOutputsDataTests extends AnyFunSuite {
   import java.io.{ BufferedWriter =>  BW, File, FileWriter => FW }
   import java.nio.file.Paths
   import java.time.{ LocalDate }
@@ -95,5 +95,7 @@ class AllOutputsDataTests {
       }
     }
   }
+
+  test("Something here") (pending)
 
 }

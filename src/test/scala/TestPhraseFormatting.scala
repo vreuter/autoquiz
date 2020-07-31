@@ -1,14 +1,15 @@
 package autoquiz
 
-import org.scalatest.{ FunSuite, Matchers }
-import org.scalatest.prop.GeneratorDrivenPropertyChecks
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers
+import org.scalatestplus.scalacheck.ScalaCheckDrivenPropertyChecks
 
 /**
  * Test the rendering/formatting and raw versions of phrases.
  *
  * @author Vince Reuter
  */
-class TestPhrases extends FunSuite with Matchers with GeneratorDrivenPropertyChecks {
+class TestPhrases extends AnyFunSuite with Matchers with ScalaCheckDrivenPropertyChecks {
   import org.scalacheck.{ Arbitrary, Gen }
   
   // Randomly choose a builder for one of the typed formatting instances.

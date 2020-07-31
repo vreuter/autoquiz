@@ -1,6 +1,8 @@
 package autoquiz
 
-import org.scalatest._
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers
+
 
 /**
  * Tests for a particular case of an answer list structure.
@@ -9,7 +11,7 @@ import org.scalatest._
  *
  * @author Vince Reuter
  */
-class TestAnswerBulletWithNumberedList extends FunSuite with Matchers {
+class TestAnswerBulletWithNumberedList extends AnyFunSuite with Matchers {
   import io.circe.parser.decode
 
   val qText = "What are the main validation questions to address in a ChIP-PCR experiment?"
