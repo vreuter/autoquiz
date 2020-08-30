@@ -79,7 +79,9 @@ object InteractiveTesting {
       "Virology-Learning", 
       "popgen", 
       "paper_notes", 
-      "Immunology"
+      "Immunology", 
+      "KimLab", 
+      "mtDNA-ABM"
     )
     val folders = qaRootFolderNames map { foldName => 
       new File(Paths.get(System.getenv("CODE"), foldName).toString) }
@@ -102,7 +104,7 @@ object InteractiveTesting {
     secFileGroupTrios.toNel match {
       case None => (Option.empty[File], List.empty[File], errFilePairs)
       case Some(trios) => {
-        val preamble = standardPreamble("All Questions", "Vince Reuter", "Last updated Tuesday, August 18, 2020")
+        val preamble = standardPreamble("All Questions", "Vince Reuter", "Last updated Sunday, August 30, 2020")
         val (files, groups) = trios.toList.foldRight(
           List.empty[File] -> List.empty[(String, NEL[TexQA])]){ 
             case ((n, f, qas), (fs, gs)) => (f :: fs, (n, qas) :: gs) }
