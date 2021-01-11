@@ -1,6 +1,6 @@
 object InteractiveTemplateQA {
 
-  interp.load.ivy("org.typelevel" %% "cats-core" % "2.1.1")
+  interp.load.ivy("org.typelevel" %% "cats-core" % "2.3.0")
   import java.io.{ BufferedWriter, File, FileWriter }
   import java.nio.file.{ Paths }
   import cats.Monoid
