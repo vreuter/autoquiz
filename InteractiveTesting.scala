@@ -3,7 +3,7 @@ object InteractiveTesting {
   import java.io.{ BufferedWriter =>  BW, File, FileWriter => FW }
   import java.nio.file.Paths
 
-  interp.load.ivy("org.typelevel" %% "cats-core" % "2.1.1")
+  interp.load.ivy("org.typelevel" %% "cats-core" % "2.3.0")
   import cats.data.{ NonEmptyList => NEL }
   import cats.syntax.list._
   interp.load.ivy("org.typelevel" % "mouse_2.13" % "0.25")
@@ -49,7 +49,7 @@ object InteractiveTesting {
     ""
   ) mkString "\n"
   
-  val libVersion = "0.1.1"
+  val libVersion = "0.2.0-SNAPSHOT"
   val libname = "autoquiz"
   val codePath: File = findCodeUnsafe()
   val repoPath: File = new File(codePath, libname)
@@ -104,7 +104,7 @@ object InteractiveTesting {
     secFileGroupTrios.toNel match {
       case None => (Option.empty[File], List.empty[File], errFilePairs)
       case Some(trios) => {
-        val preamble = standardPreamble("All Questions", "Vince Reuter", "Last updated Monday, December 28, 2020")
+        val preamble = standardPreamble("All Questions", "Vince Reuter", "Last updated Sunday, January 10, 2021")
         val (files, groups) = trios.toList.foldRight(
           List.empty[File] -> List.empty[(String, NEL[TexQA])]){ 
             case ((n, f, qas), (fs, gs)) => (f :: fs, (n, qas) :: gs) }
