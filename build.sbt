@@ -1,6 +1,6 @@
 name := "autoquiz"
-version := "0.1.1"
-scalaVersion := "2.13.2"
+version := "0.2.0-SNAPSHOT"
+scalaVersion := "2.13.4"
 organization := "vreuter"
 
 assemblyJarName in assembly := s"${name.value}_v${version.value}.jar"
@@ -9,11 +9,11 @@ publishTo := Some(Resolver.file(s"${name.value}",  new File(Path.userHome.absolu
 
 /* More runtime-y stuff */
 libraryDependencies += "com.github.scopt" %% "scopt" % "4.0.0-RC2"
-//libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3"
-//libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0"
+libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3"
+libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2"
 
 /* Core abstractions */
-libraryDependencies += "org.typelevel" %% "cats-core" % "2.1.1"
+libraryDependencies += "org.typelevel" %% "cats-core" % "2.3.0"
 libraryDependencies += "org.typelevel" % "mouse_2.13" % "0.25"
 
 // JSON encoding, decoding and rendering
