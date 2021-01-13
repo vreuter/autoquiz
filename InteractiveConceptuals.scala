@@ -57,19 +57,27 @@ object InteractiveConceptuals {
   val linkDiseq = Concept(
     key = "LD", 
     name = "linkage disequilibrium", 
-    formula = "$D \\triangleq P_{A,B} - p_A p_B$", 
+    formula = "D \\\\triangleq P_{A,B} - p_A p_B", 
     statement = "Linkage disequilibrium is the difference between observed allelic joint occurrence, and joint occurrence under independence.")
 
   val ldErosion = Concept(
     name = "LD erosion", 
-    formula = "$D(t) = (1-c)^t D(0) \\text{, where } c \\text{ is the \\textit{recombination rate}}$", 
+    formula = "D(t) = (1-c)^t D(0) \\text{, where } c \\text{ is the \\textit{recombination rate}}", 
     statement = "The recombination rate is the rate of linkage equilibrium erosion.",
     support = LatexFile(ldErosionProofFile))
+
+  val jsons = List(linkDiseq.asJson, ldErosion.asJson)
+  val tempfile = new File(new File(System.getenv("HOME")), "temptest-concepts.json")
+  val tempW = new BW(new FW(tempfile))
+  try {
+    tempW.write(jsons.asJson.spaces2)
+    tempW.newLine()
+  } finally { tempW.close() }
 
   val effPopMaxAtN = Concept(
     key = "sex-balance-max-eff-pop-at-N", 
     name = "Sex balance maximizes effective population size at true population size.", 
-    formula = "$N_f = N_m \\implies N_e = N$", 
+    formula = "N_f = N_m \\\\implies N_e = N", 
     statement = "Sex balance maximizes effective population size at true population size.", 
     support = LatexFile(effPopMaxTruePopProofFile))
 
@@ -93,7 +101,9 @@ object InteractiveConceptuals {
       List("\\implies r \\cdot N = \\frac{4 \\cdot N_f \\cdot N_m}{N^2}N = \\frac{4 N_f N_m}{N_f + N_m} = N_e")))
   )
 
-  val jsons = List(linkDiseq.asJson, ldErosion.asJson, effPopMaxAtN.asJson, effPopInvProbIBD.asJson, effPopRatioCouplings.asJson)
+  val jsons = List(
+    linkDiseq.asJson, ldErosion.asJson, 
+    effPopMaxAtN.asJson, effPopInvProbIBD.asJson, effPopRatioCouplings.asJson)
   val tempfile = new File(new File(System.getenv("HOME")), "temptest-concepts.json")
   val tempW = new BW(new FW(tempfile))
   try {

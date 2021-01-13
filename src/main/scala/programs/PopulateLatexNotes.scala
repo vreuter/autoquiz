@@ -19,6 +19,8 @@ object PopulateLatexNotes extends StrictLogging {
   import mouse.boolean._
   import Conceptual._, Support._
   
+  val placeholderDirective = "%INSERT:"
+
   case class Config(
     instanceManifest: File = new File(""), 
     templateRoot: File = new File(""), 
@@ -66,11 +68,11 @@ object PopulateLatexNotes extends StrictLogging {
       logger.info(s"Found ${templateCandidates.size} template candidates: ${templateCandidates.map(_.getPath) mkString ", "}")
 
       implicit val showConcept: Show[Concept] = Show.show(c => {
-        val stateLines = List("\\par\\smallskip", "\\begin{center}", c.statements.head, "\\end{center}", "\\par\\smallskip")
-        val formLines = List("\\begin{align*}", c.formula, "\\end{align*}")
+        val stateLines = List("\\\\par\\\\smallskip", "\\\\begin{center}", c.statements.head, "\\\\end{center}", "\\\\par\\\\smallskip")
+        val formLines = List("\\\\begin{align*}", c.formula, "\\\\end{align*}")
         val eqvStates: List[String] = c.statements.tail match {
           case Nil => Nil
-          case eqs => "\\underline{Equivalent statements}" :: "\\par\\smallskip" :: eqs
+          case eqs => "\\\\underline{Equivalent statements}" :: "\\\\par\\\\smallskip" :: eqs
         }
         val supportLines: List[String] = c.supports match {
           case Nil => Nil
@@ -90,7 +92,7 @@ object PopulateLatexNotes extends StrictLogging {
       })
       val unusedKeys = concPool.keySet -- results.foldLeft(Set.empty[String]){ case (acc, r) => acc ++ r.keyCounts.keySet }
       if (unusedKeys.nonEmpty) {
-        logger.info(s"${unusedKeys.size} unused concept keys: ${unusedKeys.toList.sorted mkString ", "}")
+        logger.info(s"${unusedKeys.size} unused concept key(s): ${unusedKeys.toList.sorted mkString ", "}")
       }
       val unfoundKeys: List[(File, Set[String])] = results.foldRight(List.empty[(File, Set[String])]){
         case (r, acc) => r.missingKeys match {
@@ -147,7 +149,7 @@ object PopulateLatexNotes extends StrictLogging {
               val vOpt: Option[Concept] = pool.get(k)
               vOpt match {
                 case None => (l, subAcc + (k -> Option.empty[Int]))
-                case Some(v) => (l.replaceAll(k, v.show), subAcc + (k -> subAcc.get(k).fold(Some(1))(
+                case Some(v) => (l.replaceAll(s"${placeholderDirective}${k}", v.show), subAcc + (k -> subAcc.get(k).fold(Some(1))(
                   xOpt => { val x = xOpt.getOrElse(throw new Exception("Illegal state!")); Some(x+1) } )))
               }
             } }
@@ -164,7 +166,7 @@ object PopulateLatexNotes extends StrictLogging {
   def extractKeys(lines: List[String]): List[(List[String], String)] = {
     import scala.util.matching.Regex
     val re = raw"%INSERT:[^\s]+".r
-    val getKey: Regex.Match => String = _.toString.stripPrefix("%INSERT:")
+    val getKey: Regex.Match => String = _.toString.stripPrefix(placeholderDirective)
     lines.map(l => re.findAllMatchIn(l).toList.map(getKey) -> l)
   }
 
