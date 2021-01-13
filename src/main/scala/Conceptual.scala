@@ -17,7 +17,12 @@ object Conceptual {
         case ShortNull => Json.Null
         case ShortText(t) => t.asJson
       }
-      def apply(c: HCursor): Decoder.Result[ShortTextLike] = c.as[String].map(t => ShortText(t))
+      def apply(c: HCursor): Decoder.Result[ShortTextLike] = {
+        import mouse.boolean._
+        c.as[String].fold(
+          _ => c.value.isNull.either(DecodingFailure("ShortText decoder got neither null nor String", Nil), ShortNull), 
+          s => Right(ShortText(s)))
+      }
     }
   }
   
@@ -33,7 +38,12 @@ object Conceptual {
         case LongNull => Json.Null
         case LongText(t) => t.asJson
       }
-      def apply(c: HCursor): Decoder.Result[LongTextLike] = c.as[String].map(t => LongText(t))
+      def apply(c: HCursor): Decoder.Result[LongTextLike] = {
+        import mouse.boolean._
+        c.as[String].fold(
+          _ => c.value.isNull.either(DecodingFailure("LongText decoder got neither null nor String", Nil), LongNull), 
+          s => Right(LongText(s)))
+      }
     }
   }
 

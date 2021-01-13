@@ -9,9 +9,6 @@ object Support {
   
   sealed trait SupportSourceLike
 
-  private[this] def unifyDecoders[A, B, U](dA: Decoder[A], dB: Decoder[B]): Decoder[U] = 
-    dA.either(dB).map(_.fold(_.asInstanceOf[U], _.asInstanceOf[U]))
-
   object SupportSourceLike {
     implicit val supportLikeCodec: Codec[SupportSourceLike] = new Codec[SupportSourceLike] {
       import ProofLines._, SupportFile._
@@ -20,7 +17,7 @@ object Support {
         case sf: SupportFile => sf.asJson
       }
       def apply(c: HCursor): Decoder.Result[SupportSourceLike] = 
-        unifyDecoders(implicitly[Decoder[SupportFile]], implicitly[Decoder[ProofLines]])(c)
+        JsonUtil.unifyDecoders(implicitly[Decoder[SupportFile]], implicitly[Decoder[ProofLines]])(c)
     }
   }
 
@@ -39,7 +36,7 @@ object Support {
         case f: ImageFile => f.asJson
       }
       def apply(c: HCursor): Decoder.Result[SupportFile] = 
-        unifyDecoders(implicitly[Decoder[LatexFile]], implicitly[Decoder[ImageFile]])(c)
+        JsonUtil.unifyDecoders(implicitly[Decoder[LatexFile]], implicitly[Decoder[ImageFile]])(c)
     }
   }
 
@@ -62,7 +59,7 @@ object Support {
   object LatexFile {
     private[this] val key = "latex"
     implicit val latexFileCodec: Codec[LatexFile] = new Codec[LatexFile] {
-      def apply(f: LatexFile): Json = Json.obj(key -> f.asJson)
+      def apply(f: LatexFile): Json = Json.obj(key -> f.get.asJson)
       def apply(c: HCursor): Decoder.Result[LatexFile] = c.get[File](key).map(f => LatexFile(f))
     }
   }
