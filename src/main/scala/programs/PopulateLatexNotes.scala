@@ -9,6 +9,7 @@ import com.typesafe.scalalogging.StrictLogging
  */
 object PopulateLatexNotes extends StrictLogging {
   import java.io.{ BufferedWriter, File, FileWriter }
+  import java.nio.file.{ Files, Paths }
   import scala.io.Source
   import scopt._
   import autoquizinfo.BuildInfo
@@ -20,11 +21,14 @@ object PopulateLatexNotes extends StrictLogging {
   import Conceptual._, Support._
   
   val placeholderDirective = "%INSERT:"
+  val targetFolder = "target"
 
   case class Config(
     instanceManifest: File = new File(""), 
     templateRoot: File = new File(""), 
-    summaryFile: File = new File("")
+    summaryFile: File = new File(""), 
+    sandbox: Option[File] = Option.empty[File], 
+    overwriteSandbox: Boolean = false
   )
   
   def main(args: Array[String]): Unit = {
@@ -44,6 +48,12 @@ object PopulateLatexNotes extends StrictLogging {
         .action((d, c) => c.copy(templateRoot = d))
         .validate(d => if (d.isDirectory) Right(()) else Left(s"Templates root folder isn't a directory: $d"))
         .text("Path to filesystem root in which to find LaTeX templates")
+      opt[File]("sandbox")
+        .action((d, c) => c.copy(sandbox = Some(d)))
+        .text("Path to sandbox folder to build copies of the templated files.")
+      opt[Unit]("overwriteSandbox")
+        .action((_, c) => c.copy(overwriteSandbox = true))
+        .text("License overwriting of the build folder")
     }
     
     parser.parse(args, Config()).fold(throw new Exception("Bad use.")){ conf => {
@@ -63,7 +73,8 @@ object PopulateLatexNotes extends StrictLogging {
       logger.info(s"Templates root: ${conf.templateRoot}")
       val templateCandidates: List[File] = {
         import scala.sys.process._
-        Seq("find", conf.templateRoot.getPath, "-name", "*.tex").lazyLines.toList.map(p => new File(p))
+        // Find all TeX files that aren't already filled.
+        Seq("find", conf.templateRoot.getPath, "-name", "*.tex").lazyLines.toList.filterNot(_.endsWith(".filled.tex")).map(p => new File(p))
       }
       logger.info(s"Found ${templateCandidates.size} template candidates: ${templateCandidates.map(_.getPath) mkString ", "}")
 
@@ -77,8 +88,8 @@ object PopulateLatexNotes extends StrictLogging {
         val supportLines: List[String] = c.supports match {
           case Nil => Nil
           case supp :: Nil => supp match {
-            case ProofLines(ls) => ls.toList
-            case LatexFile(f) => List(s"\\input{$f}")
+            case ProofLines(ls) => "\\\\underline{Proof}:" :: "\\\\begin{align*}" :: (ls.toList.map(_ ++ " \\\\" ++ "\\\\") :+ "\\\\end{align*}")
+            case LatexFile(f) => List(s"\\\\input{$f}")
             case ImageFile(f) => throw new Exception(s"Image file support show not yet supported (used for ${c.key})")
           }
           case supps => throw new Exception(s"${supps.size} supports for concept key ${c.key} -- only 1 support currently implemented")
@@ -105,23 +116,57 @@ object PopulateLatexNotes extends StrictLogging {
         val allUnfound: Set[String] = unfoundKeys.map(_._2).reduce(_ ++ _)
         logger.warn(s"${allUnfound.size} unfound key(s): ${allUnfound.toList.sorted mkString ", "}")
       }
-      val summaryWriter = new BufferedWriter(new FileWriter(conf.summaryFile))
-      try {
-        summaryWriter.write(List("infile", "outfile", "key", "nTimesReplaced") mkString "\t")
-        summaryWriter.newLine()
-        results foreach { r => {
-          val currIn = r.infile.getPath
-          val currOut = r.outfile.fold("NA")(_.getPath)
-          r.keyCounts foreach { case (k, n) => {
-            val line = List(currIn, currOut, k, n.show) mkString "\t"
-            summaryWriter.write(line)
-            summaryWriter.newLine()
-          } }
-        } }
-      } finally { summaryWriter.close() }
+      writeSummary(summFile = conf.summaryFile, processResults = results)
+      conf.sandbox.map(d => setupSandbox(d, results, overwrite = conf.overwriteSandbox))
     }}
 
     logger.info("Done.")
+  }
+
+  def setupBuildLines(buildFolder: File)(tex: File): List[String] = {
+    val parent = tex.getParentFile
+    val outdir = new File(parent, targetFolder)
+    val outfile = new File(outdir, s"${tex.getName.stripSuffix(".tex")}.pdf")
+    val cmds = List(
+      s"cd $parent", 
+      s"pdflatex -halt-on-error -output-directory $targetFolder $tex", 
+      s"cp $outfile $buildFolder")
+    if (outdir.exists) cmds else s"mkdir $outdir" :: cmds
+  }
+
+  def setupSandbox(sandbox: File, processResults: List[ProcessResult], overwrite: Boolean = false): Option[File] = {
+    logger.info(s"Establishing sandbox: $sandbox")
+    if (!overwrite && sandbox.exists) throw new IllegalArgumentException(s"Sandbox already exists: $sandbox")
+    if (!sandbox.exists) { sandbox.mkdirs() }
+    //val cp: File => Unit = f => java.nio.file.Files.copy(f.toPath, Paths.get(sandbox.getPath, f.getName))
+    //processResults.flatMap(_.outfile).foreach(cp)
+    val scriptLines = processResults.flatMap(_.outfile).flatMap(setupBuildLines(sandbox))
+    scriptLines.nonEmpty.option(new File(sandbox, "build.sh")).map(buildScript => {
+      val w = new BufferedWriter(new FileWriter(buildScript))
+      logger.info(s"Writing build script: $buildScript")
+      try { ("#!/bin/bash" :: scriptLines) foreach { line => { w.write(line); w.newLine() } } }
+      finally { w.close() }
+      sandbox
+    })
+  }
+
+  def writeSummary(summFile: File, processResults: List[ProcessResult]): File = {
+    logger.info(s"Writing summary: ${summFile}")
+    val summaryWriter = new BufferedWriter(new FileWriter(summFile))
+    try {
+      summaryWriter.write(List("infile", "outfile", "key", "nTimesReplaced") mkString "\t")
+      summaryWriter.newLine()
+      processResults foreach { r => {
+        val currIn = r.infile.getPath
+        val currOut = r.outfile.fold("NA")(_.getPath)
+        r.keyCounts foreach { case (k, n) => {
+          val line = List(currIn, currOut, k, n.show) mkString "\t"
+          summaryWriter.write(line)
+          summaryWriter.newLine()
+        } }
+      } }
+    } finally { summaryWriter.close() }
+    summFile
   }
 
   final case class ProcessResult(infile: File, outfile: Option[File], missingKeys: List[String], keyCounts: Map[String, Int])

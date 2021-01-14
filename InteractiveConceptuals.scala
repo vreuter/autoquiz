@@ -62,17 +62,18 @@ object InteractiveConceptuals {
 
   val ldErosion = Concept(
     name = "LD erosion", 
-    formula = "D(t) = (1-c)^t D(0) \\text{, where } c \\text{ is the \\textit{recombination rate}}", 
+    formula = "D(t) = (1-c)^t D(0) \\\\text{, where } c \\\\text{ is the \\\\textit{recombination rate}}", 
     statement = "The recombination rate is the rate of linkage equilibrium erosion.",
     support = LatexFile(ldErosionProofFile))
 
-  val jsons = List(linkDiseq.asJson, ldErosion.asJson)
+/*  val jsons = List(linkDiseq.asJson, ldErosion.asJson)
   val tempfile = new File(new File(System.getenv("HOME")), "temptest-concepts.json")
   val tempW = new BW(new FW(tempfile))
   try {
     tempW.write(jsons.asJson.spaces2)
     tempW.newLine()
   } finally { tempW.close() }
+*/
 
   val effPopMaxAtN = Concept(
     key = "sex-balance-max-eff-pop-at-N", 
@@ -84,21 +85,21 @@ object InteractiveConceptuals {
   val effPopInvProbIBD = Concept(
     key = "eff-pop-inv-IBD-prob", 
     name = "Effective population size is inverse of indirect IBD probability.", 
-    formula = "\\frac{1}{N_e} = P(2 \\text{ copies of a grandparent allele } | \\text{ parents are half-sibs }) \\cdot P(\\text{parents are half-sibs})",
-    support = ProofLines(NEL("N_e &\\triangleq \\frac{1}{4}\\big(1/N_f + 1/N_m\\big)", List(
-      "&= \\Big(\\frac{1}{2}\\Big)^2\\big(1/N_f + 1/N_m\\big)", 
-      "&= P(\\text{particular grandparental allele})^2 \\cdot \\big(P(\\text{parents share mother}) + P(\\text{parents share father})\\big)", 
-      "&= P(2 \\text{ copies of partiular grandparent alleles}) \\cdot P(\\text{parents are half-sibs})"))), 
-    statement = "\\textbf{\\textit{Effective} population} size is inverse of \\textbf{\\textit{indirect} IBD} probability.")
+    formula = "\\\\frac{1}{N_e} = P(2 \\\\text{ copies of a grandparent allele } | \\\\text{ parents are half-sibs }) \\\\cdot P(\\\\text{parents are half-sibs})",
+    support = ProofLines(NEL("N_e &\\\\triangleq \\\\frac{1}{4}\\\\big(1/N_f + 1/N_m\\\\big)", List(
+      "&= \\\\Big(\\\\frac{1}{2}\\\\Big)^2\\\\big(1/N_f + 1/N_m\\\\big)", 
+      "&= P(\\\\text{particular grandparental allele})^2 \\\\cdot \\\\big(P(\\\\text{parents share mother}) + P(\\\\text{parents share father})\\\\big)", 
+      "&= P(2 \\\\text{ copies of partiular grandparent alleles}) \\\\cdot P(\\\\text{parents are half-sibs})"))), 
+    statement = "\\\\textbf{\\\\textit{Effective} population} size is inverse of \\\\textbf{\\\\textit{indirect} IBD} probability.")
   
   val effPopRatioCouplings = Concept(
     key = "eff-pop-ratio-couplings", 
-    name = "\\textbf{\\textit{Effective} population} size is true size scaled by a ratio of couplings.", 
-    statement = "\\textbf{\\textit{Effective} population} size is the reduction, via scaling by the ratio between \\textit{actual} number of couplings available to number available under sex parity (assuming \\textit{random mating}), of true population size.", 
-    formula = "N_e = r \\cdot N \\text{, where } r \\text{ is a ratio of counts of couplings}", 
+    name = "\\\\textbf{\\\\textit{Effective} population} size is true size scaled by a ratio of couplings.", 
+    statement = "\\\\textbf{\\\\textit{Effective} population} size is the reduction, via scaling by the ratio between \\\\textit{actual} number of couplings available to number available under sex parity (assuming \\\\textit{random mating}), of true population size.", 
+    formula = "N_e = r \\\\cdot N \\\\text{, where } r \\\\text{ is a ratio of counts of couplings}", 
     support = ProofLines(NEL(
-      "r \\triangleq \\frac{N_f \\cdot N_m}{N/2 \\cdot N/2} = \\frac{N_f \\cdot N_m}{N^2/4} = \\frac{4 N_f \\cdot \\cdot N_m}{N^2}", 
-      List("\\implies r \\cdot N = \\frac{4 \\cdot N_f \\cdot N_m}{N^2}N = \\frac{4 N_f N_m}{N_f + N_m} = N_e")))
+      "r \\\\triangleq \\\\frac{N_f \\\\cdot N_m}{N/2 \\\\cdot N/2} = \\\\frac{N_f \\\\cdot N_m}{N^2/4} = \\\\frac{4 N_f \\\\cdot \\\\cdot N_m}{N^2}", 
+      List("\\\\implies r \\\\cdot N = \\\\frac{4 \\\\cdot N_f \\\\cdot N_m}{N^2}N = \\\\frac{4 N_f N_m}{N_f + N_m} = N_e")))
   )
 
   val jsons = List(
@@ -111,6 +112,16 @@ object InteractiveConceptuals {
     tempW.newLine()
   } finally { tempW.close() }
   
-  val maybeParse: Either[String, List[Concept]] = JsonUtil.readJsonFile[List[Concept]](tempfile)
+  def readJsonFile[A](f: File)(implicit decode: Decoder[A]): Either[String, A] = {
+    import scala.io.Source
+    import cats.syntax.either._
+    val content = Source.fromFile(f).mkString
+    io.circe.parser.parse(content) match {
+      case Left(e) => Left(e.getMessage)
+      case Right(doc) => decode(doc.hcursor).leftMap(_.getMessage)
+    }
+  }
+
+  val maybeParse: Either[String, List[Concept]] = readJsonFile[List[Concept]](tempfile)
 
 }
